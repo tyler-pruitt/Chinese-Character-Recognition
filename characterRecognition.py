@@ -11,8 +11,10 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
-import cv2
+
+#import helper functions
+from scripts import loadImagesFromFolder
+from scripts import filePathCol
 
 #load chinese_mnist.csv data
 labels = ('suite_id', 'sample_id', 'code', 'value', 'character')
@@ -45,32 +47,6 @@ print('')
 
 
 #load image data (15,000 images each 64 x 64)
-
-def loadImagesFromFolder(folder):
-    """
-    imports the images held within a folder into a list of images
-    """
-    images, imgdict = [], {}
-    
-    for filename in os.listdir(folder):
-        
-        img = cv2.imread(os.path.join(folder,filename),0)
-        #key is "input_suite_id_sample_id_code.jpg"
-        key = filename
-        
-        if img is not None:
-            images.append(img)
-            imgdict[key] = img
-    
-    return imgdict
-
-def filePathCol(csvData):
-    """
-    returns the file path of the associated image for the indices of the csv data
-    """
-    filePath = f"input_{csvData[0]}_{csvData[1]}_{csvData[2]}.jpg" #input_1_1_10.jpg    
-    return filePath
-
 directory = '/Users/tylerpruitt/Desktop/Coding/Machine Learning/chinese character recognition/data/data/'
 
 imageDict = loadImagesFromFolder(directory)
@@ -109,15 +85,17 @@ because 10 is a discrete number that we have to split between our training data 
 data
 """
 
-#here we need to split based on sample_id (sample_id index is 1)
+#here we need to 80/20 split based on sample_id (sample_id index is 1)
 
-trainData = np.empty((12000, 6), dtype=np.ndarray)
-testData = np.empty((3000, 6), dtype=np.ndarray)
+split = 0.8
+
+trainData = np.empty((int(15000*split), 6), dtype=np.ndarray)
+testData = np.empty((15000 - int(15000*split), 6), dtype=np.ndarray)
 
 trainCount, testCount = 0, 0
 
 for i in range(1, len(csvDataArray)):
-    if int(csvDataArray[i][1]) <= 8:
+    if int(csvDataArray[i][1]) <= int(10*split):
         trainData[trainCount] = csvDataArray[i]
         trainCount += 1
     else:
