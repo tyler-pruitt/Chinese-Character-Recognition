@@ -25,7 +25,7 @@ sample_id is for each sample of each volunteer (10 total)
     i.e. each volunteer writes each character 10 times
 code is used to identify each character in their sequence
     i.e. code is the ith character in order
-    i.e. 零 is 1, 二 is 2, ... 九 is 10,
+    i.e. 零 is 1, 一 is 2, 二 is 3, ... 九 is 10,
 value is the numerical value of the character i.e. 5
 character is the actual symbol i.e. 五
 """
@@ -44,18 +44,17 @@ print(csvData.tail())
 print('')
 
 
-#load image data (15,000 images each 64 x 64 x 3)
+#load image data (15,000 images each 64 x 64)
 
 def loadImagesFromFolder(folder):
     """
     imports the images held within a folder into a list of images
     """
     images, imgdict = [], {}
-    count = 0
     
     for filename in os.listdir(folder):
         
-        img = cv2.imread(os.path.join(folder,filename))
+        img = cv2.imread(os.path.join(folder,filename),0)
         #key is "input_suite_id_sample_id_code.jpg"
         key = filename
         
@@ -63,9 +62,7 @@ def loadImagesFromFolder(folder):
             images.append(img)
             imgdict[key] = img
     
-    imgdata = np.array(images)
-    
-    return imgdata, imgdict
+    return imgdict
 
 def filePathCol(csvData):
     """
@@ -76,10 +73,10 @@ def filePathCol(csvData):
 
 directory = '/Users/tylerpruitt/Desktop/Coding/Machine Learning/chinese character recognition/data/data/'
 
-imageData, imageDict = loadImagesFromFolder(directory)
+imageDict = loadImagesFromFolder(directory)
 
 #check to see how images and csv data are connected
-plt.imshow(imageData[0])
+plt.imshow(imageDict["input_1_1_10.jpg"], cmap="gray")
 
 csvData["file_path"] = csvData.apply(filePathCol, axis=1)
 
@@ -97,6 +94,7 @@ for i in range(len(csvDataArray)):
             pass
 
 print(csvDataArray)
+print('')
 
 #split into training data (12,000 images) and testing data (3,000 images) into an 80/20 split
 
@@ -126,18 +124,25 @@ for i in range(1, len(csvDataArray)):
         testData[testCount] = csvDataArray[i]
         testCount += 1
 
-trainFiles, testFiles = np.empty((12000), dtype=object), np.empty((3000), dtype=object)
-trainLabels, testLabels = np.empty((12000), dtype=object), np.empty((3000), dtype=object)
+trainFiles = trainData[:,5]
+testFiles = testData[:,5]
 
-for i in range(len(trainData)):
-    trainFiles[i] = trainData[i][5]
-    trainLabels[i] = trainData[i][4]
+trainCharacters = trainData[:,4]
+testCharacters = testData[:,4]
 
-for i in range(len(testData)):
-    testFiles[i] = testData[i][5]
-    testLabels[i] = testData[i][4]
+trainLabels = trainData[:,2]
+testLabels = testData[:,2]
 
-trainImages, testImages = np.empty((12000, 64, 64, 3), dtype=int), np.empty((3000, 64, 64, 3), dtype=int)
+trainLabels = np.asarray(trainLabels).astype(np.float32)
+testLabels = np.asarray(testLabels).astype(np.float32)
+
+for i in range(len(trainLabels)):
+    trainLabels[i] -= 1
+
+for i in range(len(testLabels)):
+    testLabels[i] -= 1
+
+trainImages, testImages = np.empty((12000, 64, 64), dtype=int), np.empty((3000, 64, 64), dtype=int)
 
 trainImgCount, testImgCount = 0, 0
 
@@ -155,3 +160,21 @@ testImages = testImages / 255
 #training data is (trainLabels, trainImages) and testing data is (testLabels, testImages)
 
 #build the model
+model = tf.keras.Sequential([
+    tf.keras.layers.Flatten(input_shape=(64, 64)),
+    tf.keras.layers.Dense(128, activation="relu"),
+    tf.keras.layers.Dense(15)
+])
+
+#compile the model
+model.compile(optimizer="adam", loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=["accuracy"])
+
+#train the model with the training data
+model.fit(trainImages, trainLabels, epochs=20)
+
+#test the model with the testing data
+test_loss, test_acc = model.evaluate(testImages, testLabels, verbose=1)
+print('Test accuracy:', test_acc)
+print('Test loss:', test_loss)
+
