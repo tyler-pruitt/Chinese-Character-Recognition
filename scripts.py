@@ -6,10 +6,11 @@ Created on Thu May  6 01:46:41 2021
 @author: tylerpruitt
 """
 
+import matplotlib.pyplot as plt
 import os
 import cv2
 
-def loadImagesFromFolder(folder):
+def loadImages(folder):
     """
     imports the images held within a folder into a list of images
     """
@@ -33,3 +34,12 @@ def filePathCol(csvData):
     """
     filePath = f"input_{csvData[0]}_{csvData[1]}_{csvData[2]}.jpg" #input_1_1_10.jpg    
     return filePath
+
+def disp(image):
+    """
+    displays the image in grayscale without axes
+    """
+    plt.imshow(image, cmap="gray")
+    plt.axis("off")
+    plt.show()
+

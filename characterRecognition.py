@@ -13,8 +13,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 #import helper functions
-from scripts import loadImagesFromFolder
+from scripts import loadImages
 from scripts import filePathCol
+from scripts import disp
 
 #load chinese_mnist.csv data
 labels = ('suite_id', 'sample_id', 'code', 'value', 'character')
@@ -32,8 +33,6 @@ value is the numerical value of the character i.e. 5
 character is the actual symbol i.e. 五
 """
 
-#url = '/kaggle/input/chinese-mnist/chinese_mnist.csv'
-#csvData = pd.read_csv(url, low_memory=False)
 csvData = pd.read_csv('chinese_mnist.csv', names=labels)
 
 #output csv information to screen
@@ -49,10 +48,11 @@ print('')
 #load image data (15,000 images each 64 x 64)
 directory = '/Users/tylerpruitt/Desktop/Coding/Machine Learning/chinese character recognition/data/data/'
 
-imageDict = loadImagesFromFolder(directory)
+imageDict = loadImages(directory)
 
 #check to see how images and csv data are connected
-plt.imshow(imageDict["input_1_1_10.jpg"], cmap="gray")
+#plt.imshow(imageDict["input_1_1_10.jpg"], cmap="gray")
+disp(imageDict["input_1_1_10.jpg"])
 
 csvData["file_path"] = csvData.apply(filePathCol, axis=1)
 
@@ -149,10 +149,11 @@ model.compile(optimizer="adam", loss=tf.keras.losses.SparseCategoricalCrossentro
               metrics=["accuracy"])
 
 #train the model with the training data
-model.fit(trainImages, trainLabels, epochs=20)
+model.fit(trainImages, trainLabels, epochs=15)
 
 #test the model with the testing data
+print("Evaluating testing data...")
 test_loss, test_acc = model.evaluate(testImages, testLabels, verbose=1)
-print('Test accuracy:', test_acc)
-print('Test loss:', test_loss)
+print("Test accuracy: " + str(round(test_acc*100, 3)) + "%")
+print("Test loss:", round(test_loss, 5))
 
