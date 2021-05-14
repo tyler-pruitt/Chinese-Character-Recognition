@@ -1,7 +1,10 @@
 # Chinese-Character-Recognition
 A repo for machine-learning powered image classification of handwritten Chinese characters
 
-## Packages
+## Website (Still in Progress)
+URL: https://tyler-pruitt.github.io/Chinese-Character-Recognition/
+
+## Packages Used
 TensorFlow, Numpy, Pandas, Matplotlib, CV2, OS
 
 ## Data
