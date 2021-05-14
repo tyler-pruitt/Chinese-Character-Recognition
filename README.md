@@ -49,17 +49,16 @@ Accuracy: 0.7753 (77.53%)
 
 Note: The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient dictionary
 
-```
+```python
 digit_to_char = {0:'零', 1:'一', 2:'二', 3:'三', 4:'四', 5:'五', 6:'六', 7:'七', 8:'八', 9:'九', 10:'十', 11:'百', 12:'千', 13:'万', 14:'亿'}
 ```
 
 #### 50th Test Image
 Prediction data:
 
-```
-predictData[50]
-
-array([3.6610535e-07, 1.8792988e-28, 2.2422669e-12, 1.7063133e-10,
+```python
+In [1]: predictData[50]
+Out [1]: array([3.6610535e-07, 1.8792988e-28, 2.2422669e-12, 1.7063133e-10,
        2.6500999e-09, 5.2112355e-06, 3.2691182e-07, 8.3664847e-05,
        3.6446830e-13, 9.9990106e-01, 1.1595256e-14, 5.7882625e-07,
        9.6461701e-09, 3.3319463e-07, 8.4753528e-06], dtype=float32)
@@ -72,10 +71,10 @@ array([3.6610535e-07, 1.8792988e-28, 2.2422669e-12, 1.7063133e-10,
 #### 500th Test Image
 Prediction data:
 
- ```
- predictData[500]
+ ```python
+ In [2]: predictData[500]
  
- array([3.83269071e-04, 4.26350415e-21, 5.74980230e-10, 5.73274974e-07,
+ Out [2]: array([3.83269071e-04, 4.26350415e-21, 5.74980230e-10, 5.73274974e-07,
        4.58842493e-04, 8.47115181e-03, 6.79080131e-07, 1.44536525e-05,
        8.73805250e-10, 1.13052677e-03, 2.78494355e-07, 9.84949350e-01,
        2.79740023e-04, 4.30813758e-03, 2.93952530e-06], dtype=float32)
@@ -93,7 +92,7 @@ Prediction data:
 
 In your Python code, enter the following code to import the models
 
-```
+```python
 import tensorflow as tf
 
 model = tf.keras.models.load_model('./saved_model', compile=True)
@@ -102,7 +101,7 @@ probability_model = tf.keras.models.load_model('./saved_probability_model', comp
 
 The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient dictionary
 
-```
+```python
 digit_to_char = {0:'零', 1:'一', 2:'二', 3:'三', 4:'四', 5:'五', 6:'六', 7:'七', 8:'八', 9:'九', 10:'十', 11:'百', 12:'千', 13:'万', 14:'亿'}
 ```
 
