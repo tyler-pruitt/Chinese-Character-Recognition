@@ -1,11 +1,11 @@
 //Your JavaScript code will go here!
 window.onload = function() {
     
-    loadScript('https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js');
+    //loadScript('https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js');
 
-    //var canvas = document.querySelector("canvas");
+    var canvas = document.querySelector("canvas");
 
-    //var signaturePad = new SignaturePad(canvas);
+    var signaturePad = new SignaturePad(canvas);
 
     /* DOCUMENTATION
     var canvas = document.querySelector("canvas");
