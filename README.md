@@ -65,6 +65,10 @@ array([3.6610535e-07, 1.8792988e-28, 2.2422669e-12, 1.7063133e-10,
        9.6461701e-09, 3.3319463e-07, 8.4753528e-06], dtype=float32)
 ```
 
+<img src="https://github.com/tyler-pruitt/Chinese-Character-Recognition/blob/main/images/testimage50.png" style="width:64;height:64;" />
+
+<img src="https://github.com/tyler-pruitt/Chinese-Character-Recognition/blob/main/images/barplot50.png" style="width:1000;height:500;" />
+
 #### 500th Test Image
 Prediction data:
 
@@ -76,6 +80,10 @@ Prediction data:
        8.73805250e-10, 1.13052677e-03, 2.78494355e-07, 9.84949350e-01,
        2.79740023e-04, 4.30813758e-03, 2.93952530e-06], dtype=float32)
  ```
+
+<img src="https://github.com/tyler-pruitt/Chinese-Character-Recognition/blob/main/images/testimage500.png" style="width:64;height:64;" />
+
+<img src="https://github.com/tyler-pruitt/Chinese-Character-Recognition/blob/main/images/barplot500.png" style="width:1000;height:500;" />
 
 ## To Use
 
