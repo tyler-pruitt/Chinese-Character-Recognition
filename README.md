@@ -41,7 +41,7 @@ Epochs: 15
 
 Loss: 0.0844
 
-Accuracy: 0.9890
+Accuracy: 0.9890 (98.90%)
 
 ### Testing Data (20%)
 Loss: 0.8035
