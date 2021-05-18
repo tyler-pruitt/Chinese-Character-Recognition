@@ -53,7 +53,7 @@ Accuracy: 0.7753 (77.53%)
 Note: The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient dictionary
 
 ```python
-digit_to_char = {0:'零', 1:'一', 2:'二', 3:'三', 4:'四', 5:'五', 6:'六', 7:'七', 8:'八', 9:'九', 10:'十', 11:'百', 12:'千', 13:'万', 14:'亿'}
+digitToChar = {0:'零', 1:'一', 2:'二', 3:'三', 4:'四', 5:'五', 6:'六', 7:'七', 8:'八', 9:'九', 10:'十', 11:'百', 12:'千', 13:'万', 14:'亿'}
 ```
 
 #### 50th Test Image
@@ -105,7 +105,7 @@ probability_model = tf.keras.models.load_model('./saved_probability_model', comp
 The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient dictionary
 
 ```python
-digit_to_char = {0:'零', 1:'一', 2:'二', 3:'三', 4:'四', 5:'五', 6:'六', 7:'七', 8:'八', 9:'九', 10:'十', 11:'百', 12:'千', 13:'万', 14:'亿'}
+digitToChar = {0:'零', 1:'一', 2:'二', 3:'三', 4:'四', 5:'五', 6:'六', 7:'七', 8:'八', 9:'九', 10:'十', 11:'百', 12:'千', 13:'万', 14:'亿'}
 ```
 
 You can then use this model in for other uses! Enjoy!
