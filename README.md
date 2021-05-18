@@ -50,7 +50,7 @@ Accuracy: 0.7753 (77.53%)
 
 ### A Closer Look
 
-Note: The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient dictionary
+Note: The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient dictionary.
 
 ```python
 DigitToChar = {0:'零', 1:'一', 2:'二', 3:'三', 4:'四', 5:'五', 6:'六', 7:'七', 8:'八', 9:'九', 10:'十', 11:'百', 12:'千', 13:'万', 14:'亿'}
@@ -61,6 +61,7 @@ Prediction data:
 
 ```python
 In [1]: PredictionData[50]
+
 Out [1]: array([3.6610535e-07, 1.8792988e-28, 2.2422669e-12, 1.7063133e-10,
        2.6500999e-09, 5.2112355e-06, 3.2691182e-07, 8.3664847e-05,
        3.6446830e-13, 9.9990106e-01, 1.1595256e-14, 5.7882625e-07,
@@ -93,7 +94,7 @@ Prediction data:
 
 #### 1) Load the models into your file
 
-In your Python code, enter the following code to import the models
+In your Python code, enter the following code to import the models.
 
 ```python
 import tensorflow as tf
@@ -102,7 +103,7 @@ model = tf.keras.models.load_model('./saved_model', compile=True)
 modelProbability = tf.keras.models.load_model('./saved_probability_model', compile=True)
 ```
 
-The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient dictionary
+The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient dictionary.
 
 ```python
 DigitToChar = {0:'零', 1:'一', 2:'二', 3:'三', 4:'四', 5:'五', 6:'六', 7:'七', 8:'八', 9:'九', 10:'十', 11:'百', 12:'千', 13:'万', 14:'亿'}
