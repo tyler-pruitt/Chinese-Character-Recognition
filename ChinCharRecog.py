@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Jan 17 03:39:35 2021
-Data found at https://www.kaggle.com/gpreda/chinese-mnist
-@author: tylerpruitt
+Last Updated on Tue May 18 06:59 2021
+Author: Tyler Pruitt
 """
 
 # Import packages
@@ -37,10 +37,10 @@ def filePathCol(csvData):
     """
     returns the file path of the associated image for the indices of the csv data
     """
-    filePath = f"input_{csvData[0]}_{csvData[1]}_{csvData[2]}.jpg" #input_1_1_10.jpg    
+    filePath = f"input_{csvData[0]}_{csvData[1]}_{csvData[2]}.jpg"
     return filePath
 
-def dispImage(image, name=""):
+def displayImage(image, name=""):
     """
     displays the image in grayscale with name in the title if given one
     """
@@ -83,7 +83,7 @@ directory = '/Users/tylerpruitt/Desktop/Coding/Machine Learning/chinese characte
 imageDict = loadImages(directory)
 
 # Check to see how images and csv data are connected
-dispImage(imageDict["input_1_1_10.jpg"], "input_1_1_10.jpg")
+displayImage(imageDict["input_1_1_10.jpg"], "input_1_1_10.jpg")
 
 csvData["file_path"] = csvData.apply(filePathCol, axis=1)
 
@@ -167,7 +167,7 @@ testImages = testImages / 255
 
 # Training data is (trainLabels, trainImages) and testing data is (testLabels, testImages)
 
-#build the model
+# Build the model
 model = tf.keras.Sequential([
     tf.keras.layers.Flatten(input_shape=(64, 64)),
     tf.keras.layers.Dense(128, activation="relu"),
@@ -188,31 +188,31 @@ print("Test accuracy: " + str(round(test_acc*100, 3)) + "%")
 print("Test loss:", round(test_loss, 5), end="\n\n")
 
 # Test model's prediction about other characters in the testing data
-modelProb = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
+modelProbability = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
 
-predictData = modelProb.predict(testImages)
+PredictionData = modelProbability.predict(testImages)
 
 # Check predictions on the 50th and 500th images in the testing data and show images
 barPlotAxis = (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14)
 
 print("Expected value for testImages[50]:", testCharacters[50])
-print("Model's prediction on testImages[50]", characters[np.argmax(predictData[50])])
-dispImage(testImages[50])
-plt.bar(barPlotAxis, predictData[50])
+print("Model's prediction on testImages[50]", characters[np.argmax(PredictionData[50])])
+displayImage(testImages[50])
+plt.bar(barPlotAxis, PredictionData[50])
 
 print("Expected value for testImages[500]:", testCharacters[500])
-print("Model's prediction on testImages[500]", characters[np.argmax(predictData[500])])
-dispImage(testImages[500])
-plt.bar(barPlotAxis, predictData[500])
+print("Model's prediction on testImages[500]", characters[np.argmax(PredictionData[500])])
+displayImage(testImages[500])
+plt.bar(barPlotAxis, PredictionData[500])
 
 # Save the model and the probability model
-modelFilePath = "./saved_model"
+ModelFilePath = "./saved_model"
 
-tf.keras.models.save_model(model, modelFilePath)
+tf.keras.models.save_model(model, ModelFilePath)
 
-modelProbFilePath = "./saved_probability_model"
+ModelProbabilityFilePath = "./saved_probability_model"
 
-tf.keras.models.save_model(modelProb, modelProbFilePath)
+tf.keras.models.save_model(modelProbability, ModelProbabilityFilePath)
 
 # Load the model to check that it works
-newModel = tf.keras.models.load_model(modelFilePath, compile=True)
+NewModel = tf.keras.models.load_model(ModelFilePath, compile=True)
