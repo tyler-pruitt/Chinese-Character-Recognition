@@ -36,14 +36,9 @@
   </head>
 
   <body onselectstart="return false">
-    <!-- <center> -->
+    <center>
     <h1>Chinese Character Recognition</h1>
-    
-    <!--
-    <button id="clearEntry">Clear Entry</button>
-    <button id="submit">Submit</button>
-    -->
-
+    <br>
     <p>
       Hello! This is where I hope to host my machine learning model in the future.
       <br> The idea is to create a space (i.e. a 64x64 pixel box) in which anyone can draw one of 
@@ -51,10 +46,10 @@
       <br> I also plan to showcase the probabilities with a numeric and graphical output of the model's 
       prediction to show some cool statistics!
       <br> Please keep coming back to see updates and progress! Thanks!
-      <br> Updated: May 14, 2021
+      <br> Updated: Jun 18, 2021
       <br> Copyright @2021 Tyler Pruitt
     </p>
-
+    <br>
     <div id="signature-pad" class="signature-pad">
       <div class="signature-pad--body">
         <canvas></canvas>
@@ -67,6 +62,7 @@
             <button type="button" class="button clear" data-action="clear">Clear</button>
             <button type="button" class="button" data-action="change-color">Change color</button>
             <button type="button" class="button" data-action="undo">Undo</button>
+            <button type="button" class="button" data-action="submit">Submit</button>
   
           </div>
           <div>
@@ -77,8 +73,7 @@
         </div>
       </div>
     </div>
-
-    <!-- </center> -->
+    </center>
     
     <!-- JavaScript -->
     <script src="js/signature_pad.umd.js"></script>
