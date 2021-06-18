@@ -2,10 +2,12 @@ var wrapper = document.getElementById("signature-pad");
 var clearButton = wrapper.querySelector("[data-action=clear]");
 var changeColorButton = wrapper.querySelector("[data-action=change-color]");
 var undoButton = wrapper.querySelector("[data-action=undo]");
+var submitButton = wrapper.querySelector("[data-action=submit]");
 var savePNGButton = wrapper.querySelector("[data-action=save-png]");
 var saveJPGButton = wrapper.querySelector("[data-action=save-jpg]");
 var saveSVGButton = wrapper.querySelector("[data-action=save-svg]");
 var canvas = wrapper.querySelector("canvas");
+
 var signaturePad = new SignaturePad(canvas, {
   // It's Necessary to use an opaque color when saving image as JPEG;
   // this option can be omitted if only saving as PNG or SVG
@@ -95,6 +97,11 @@ changeColorButton.addEventListener("click", function (event) {
   var color = "rgb(" + r + "," + g + "," + b +")";
 
   signaturePad.penColor = color;
+});
+
+// Work on the Subit Button here
+submitButton.addEventListener("click", function (event) {
+  alert("Submit button not finished yet. Please come back later.");
 });
 
 savePNGButton.addEventListener("click", function (event) {
