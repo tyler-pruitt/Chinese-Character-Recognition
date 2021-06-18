@@ -99,9 +99,13 @@ changeColorButton.addEventListener("click", function (event) {
   signaturePad.penColor = color;
 });
 
-// Work on the Subit Button here
+// Work on the Submit button here
 submitButton.addEventListener("click", function (event) {
-  alert("Submit button not finished yet. Please come back later.");
+  if (signaturePad.isEmpty()) {
+    alert("Please provide a signature first.");
+  } else {
+    alert("Submit button not finished yet. Please come back later.");
+  }
 });
 
 savePNGButton.addEventListener("click", function (event) {
