@@ -102,7 +102,7 @@ changeColorButton.addEventListener("click", function (event) {
 // Work on the Submit button here
 submitButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
-    alert("Please provide a signature first.");
+    alert("Please write first.");
   } else {
     alert("Submit button not finished yet. Please come back later.");
   }
@@ -110,27 +110,27 @@ submitButton.addEventListener("click", function (event) {
 
 savePNGButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
-    alert("Please provide a signature first.");
+    alert("Please write first.");
   } else {
     var dataURL = signaturePad.toDataURL();
-    download(dataURL, "signature.png");
+    download(dataURL, "image.png");
   }
 });
 
 saveJPGButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
-    alert("Please provide a signature first.");
+    alert("Please write first.");
   } else {
     var dataURL = signaturePad.toDataURL("image/jpeg");
-    download(dataURL, "signature.jpg");
+    download(dataURL, "image.jpg");
   }
 });
 
 saveSVGButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
-    alert("Please provide a signature first.");
+    alert("Please write first.");
   } else {
     var dataURL = signaturePad.toDataURL('image/svg+xml');
-    download(dataURL, "signature.svg");
+    download(dataURL, "image.svg");
   }
 });
