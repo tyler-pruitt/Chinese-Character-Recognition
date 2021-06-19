@@ -1,18 +1,24 @@
 var wrapper = document.getElementById("signature-pad");
 var clearButton = wrapper.querySelector("[data-action=clear]");
-var changeColorButton = wrapper.querySelector("[data-action=change-color]");
+//var changeColorButton = wrapper.querySelector("[data-action=change-color]");
 var undoButton = wrapper.querySelector("[data-action=undo]");
 var predictButton = wrapper.querySelector("[data-action=predict]");
 var savePNGButton = wrapper.querySelector("[data-action=save-png]");
 var saveJPGButton = wrapper.querySelector("[data-action=save-jpg]");
-var saveSVGButton = wrapper.querySelector("[data-action=save-svg]");
+//var saveSVGButton = wrapper.querySelector("[data-action=save-svg]");
 var canvas = wrapper.querySelector("canvas");
 
 var signaturePad = new SignaturePad(canvas, {
   // It's Necessary to use an opaque color when saving image as JPEG;
   // this option can be omitted if only saving as PNG or SVG
-  backgroundColor: 'rgb(255, 255, 255)'
+  
+  // In order to make the background black set RGB to 1,1,1
+  // In order to make the background white set RGB to 255, 255, 255
+  backgroundColor: 'rgb(1, 1, 1)'
 });
+
+// If the background color is black, set the pen color to white
+signaturePad.penColor = 'rgb(255, 255, 255)'
 
 // Adjust canvas coordinate space taking into account pixel ratio,
 // to make it look crisp on mobile devices.
@@ -90,16 +96,16 @@ undoButton.addEventListener("click", function (event) {
   }
 });
 
-changeColorButton.addEventListener("click", function (event) {
+/*changeColorButton.addEventListener("click", function (event) {
   var r = Math.round(Math.random() * 255);
   var g = Math.round(Math.random() * 255);
   var b = Math.round(Math.random() * 255);
   var color = "rgb(" + r + "," + g + "," + b +")";
 
   signaturePad.penColor = color;
-});
+});*/
 
-// Work on the Submit button here
+// Work on the Predict button here
 predictButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
     alert("Please write first.");
@@ -126,11 +132,11 @@ saveJPGButton.addEventListener("click", function (event) {
   }
 });
 
-saveSVGButton.addEventListener("click", function (event) {
+/*saveSVGButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
     alert("Please write first.");
   } else {
     var dataURL = signaturePad.toDataURL('image/svg+xml');
     download(dataURL, "image.svg");
   }
-});
+});*/
