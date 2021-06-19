@@ -46,12 +46,17 @@
       <br> The idea is to create a space (i.e. a 64x64 pixel box) in which anyone can draw one of 
       <br> the Chinese characters that the model has been trained on and it will make a prediction!
       <br> I also plan to showcase the probabilities with a numeric and graphical output of the model's 
-      <br> prediction to show some cool statistics!
-      <br> Please keep coming back to see updates and progress!
-      <br> Updated: Jun 18, 2021
+      <br> prediction to show some cool statistics! Please keep coming back to see updates and progress!
+      <br> Updated: Jun 19, 2021
       <br> Copyright @2021 Tyler Pruitt
     </p>
 
+    <br>
+    <input type="file" onchange="showFiles(event)" accept=".png, .jpg, .jpeg">
+    <br></br>
+    <center>
+    <img id='idImage' style="width: 64px; height: 64px;" align="center">
+    </center>
     <br>
 
     <div id="signature-pad" class="signature-pad">
@@ -66,7 +71,7 @@
             <button type="button" class="button clear" data-action="clear">Clear</button>
             <button type="button" class="button" data-action="change-color">Change color</button>
             <button type="button" class="button" data-action="undo">Undo</button>
-            <button type="button" class="button" data-action="submit">Submit</button>
+            <button type="button" class="button" data-action="predict">Predict</button>
   
           </div>
           <div>
@@ -82,5 +87,6 @@
     <!-- JavaScript -->
     <script src="js/signature_pad.umd.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/upload_file.js"></script>
   </body>
 </html>

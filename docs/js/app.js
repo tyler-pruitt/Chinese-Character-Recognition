@@ -2,7 +2,7 @@ var wrapper = document.getElementById("signature-pad");
 var clearButton = wrapper.querySelector("[data-action=clear]");
 var changeColorButton = wrapper.querySelector("[data-action=change-color]");
 var undoButton = wrapper.querySelector("[data-action=undo]");
-var submitButton = wrapper.querySelector("[data-action=submit]");
+var predictButton = wrapper.querySelector("[data-action=predict]");
 var savePNGButton = wrapper.querySelector("[data-action=save-png]");
 var saveJPGButton = wrapper.querySelector("[data-action=save-jpg]");
 var saveSVGButton = wrapper.querySelector("[data-action=save-svg]");
@@ -100,11 +100,11 @@ changeColorButton.addEventListener("click", function (event) {
 });
 
 // Work on the Submit button here
-submitButton.addEventListener("click", function (event) {
+predictButton.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
     alert("Please write first.");
   } else {
-    alert("Submit button not finished yet. Please come back later.");
+    alert("Predict button not finished yet. Please come back later.");
   }
 });
 
