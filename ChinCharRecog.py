@@ -24,7 +24,7 @@ def loadImages(folder):
     for filename in os.listdir(folder):
         
         img = cv2.imread(os.path.join(folder,filename),0)
-        #key is "input_suite_id_sample_id_code.jpg"
+        # Key is "input_suite_id_sample_id_code.jpg"
         key = filename
         
         if img is not None:
@@ -183,14 +183,16 @@ model.fit(trainImages, trainLabels, epochs=15)
 
 # Test the model with the testing data
 print("Evaluating testing data...")
-test_loss, test_acc = model.evaluate(testImages, testLabels, verbose=1)
-print("Test accuracy: " + str(round(test_acc*100, 3)) + "%")
-print("Test loss:", round(test_loss, 5), end="\n\n")
+testLoss, testAccuracy = model.evaluate(testImages, testLabels, verbose=1)
+print("Test accuracy: " + str(round(testAccuracy*100, 3)) + "%")
+print("Test loss:", round(testLoss, 5), end="\n\n")
 
 # Test model's prediction about other characters in the testing data
-modelProbability = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
 
-PredictionData = modelProbability.predict(testImages)
+# Adapt model's output to output probabilities
+model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
+
+PredictionData = model.predict(testImages)
 
 # Check predictions on the 50th and 500th images in the testing data and show images
 barPlotAxis = (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14)
@@ -206,13 +208,13 @@ displayImage(testImages[500])
 plt.bar(barPlotAxis, PredictionData[500])
 
 # Save the model and the probability model
-ModelFilePath = "./saved_model"
+model.save("model")
 
-tf.keras.models.save_model(model, ModelFilePath)
-
-ModelProbabilityFilePath = "./saved_probability_model"
-
-tf.keras.models.save_model(modelProbability, ModelProbabilityFilePath)
+model.save("model.h5")
 
 # Load the model to check that it works
-NewModel = tf.keras.models.load_model(ModelFilePath, compile=True)
+newModel = tf.keras.models.load_model("model", compile=True)
+
+# If the model needs to be compiled, then run
+#newModel.compile(optimizer="adam", loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+#              metrics=["accuracy"])
