@@ -50,10 +50,10 @@ Accuracy: 0.7753 (77.53%)
 
 ### A Closer Look
 
-Note: The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient dictionary.
+Note: The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient list.
 
 ```python
-DigitToChar = {0:'零', 1:'一', 2:'二', 3:'三', 4:'四', 5:'五', 6:'六', 7:'七', 8:'八', 9:'九', 10:'十', 11:'百', 12:'千', 13:'万', 14:'亿'}
+characters = ('零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '亿')
 ```
 
 #### 50th Test Image
@@ -99,14 +99,13 @@ In your Python code, enter the following code to import the models.
 ```python
 import tensorflow as tf
 
-model = tf.keras.models.load_model('./saved_model', compile=True)
-modelProbability = tf.keras.models.load_model('./saved_probability_model', compile=True)
+model = tf.keras.models.load_model("model", compile=True)
 ```
 
-The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient dictionary.
+The outputs of these models are given in the range from 0 to 14. In order to convert to characters, you can use this convenient list.
 
 ```python
-DigitToChar = {0:'零', 1:'一', 2:'二', 3:'三', 4:'四', 5:'五', 6:'六', 7:'七', 8:'八', 9:'九', 10:'十', 11:'百', 12:'千', 13:'万', 14:'亿'}
+characters = ('零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '亿')
 ```
 
 You can then use this model in for other uses! Enjoy!
@@ -123,3 +122,9 @@ For future reference let's call this directory 'folder1'.
 Change 'directory' to the /folder1/data/data/ directory. On macOS, this might like something like '/Users/user_name_here/Desktop/folder1/data/data/'.
 
 #### 4) Run the file 'ChinCharRecog.py' and enjoy!
+
+## Convert Keras Model To Tensorflow.js for Web App
+
+```
+!tensorflowjs_converter --input_format keras "model.h5" "docs/WebAppModel"
+```
