@@ -1,0 +1,41 @@
+body {
+touch-action: none; /*https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action*/
+/*font-family: "Roboto";*/
+}
+
+h1 {
+margin: 50px;
+/*font-size: 50px;*/
+text-align: center;
+}
+
+p {
+text-align: center;
+width: 50%;
+}
+
+#paint {
+border:3px solid red;
+margin: auto;
+}
+
+#predicted { 
+font-size: 30px;
+margin-top: 60px;
+text-align: center;
+}
+
+#number {
+border: 3px solid black;
+margin: auto;
+margin-top: 30px;
+text-align: center;
+vertical-align: middle;
+}
+
+#clear {
+margin: auto;
+margin-top: 70px;
+padding: 30px;
+text-align: center;
+}

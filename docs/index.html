@@ -13,7 +13,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/signature-pad.css">
+    <!-- <link rel="stylesheet" href="css/signature-pad.css"> -->
+    <link rel="stylesheet" href = "css/image-predictor.css">
 
     <!--[if IE]>
     <link rel="stylesheet" type="text/css" href="css/ie9.css">
@@ -33,39 +34,69 @@
       })();
     </script>
 
+    <!-- Image Prediction Scripts -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H0NW5Z2MYC"></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H0NW5Z2MYC');
+    </script>
+
   </head>
 
   <body onselectstart="return false">
     <center>
     <h1>Chinese Character Recognition</h1>
-    
-    <br>
 
     <p>
-      Hello! This is where I hope to host my machine learning model in the future.
-      <br> The idea is to create a space (i.e. a 64x64 pixel box) in which anyone can draw one of 
-      <br> the Chinese characters that the model has been trained on and it will make a prediction!
-      <br> I also plan to showcase the probabilities with a numeric and graphical output of the model's 
-      <br> prediction to show some cool statistics! Please keep coming back to see updates and progress!
+      Hello! This is where I hope to host my machine learning model in the future. 
+      Project hosted at: <a href="https://github.com/tyler-pruitt/Chinese-Character-Recognition">https://github.com/tyler-pruitt/Chinese-Character-Recognition</a>. 
+      The idea is to create a space (i.e. a 64x64 pixel box) in which anyone can draw one of the Chinese 
+      characters that the model has been trained on and it will make a prediction! I also plan to showcase 
+      the probabilities with a numeric and graphical output of the model's prediction to show some cool 
+      statistics! Please keep coming back to see updates and progress!
       <br>
       <br> To use:
-      <br> 1) Draw the character in the black box below
-      <br> Available characters are 零，一，二，三，四，五，六，七，八，九，十，白，千，万，亿
+      <br> 1) Draw the character in the red box below. Available characters are 零，一，二，三，四，五，六，
+      七，八，九，十，百，千，万，and 亿.
       <br> 2) Download your drawing either as an PNG or JPG image
       <br> 3) Upload this image to have the model predict what character it is
       <br>
-      <br> Updated: Jun 19, 2021
-      <br> Copyright @2021 Tyler Pruitt
+      <br> Updated: Jun 30, 2021
+      <br> Copyright 2021 Tyler Pruitt
     </p>
 
-    <br>
+    <!--
     <input type="file" onchange="showFiles(event)" accept=".png, .jpg, .jpeg">
     <br></br>
     <center>
     <img id='idImage' style="width: 64px; height: 64px;" align="center">
     </center>
-    <br>
+    -->
 
+    <p>
+      Draw the character in the box below.
+    </p>
+
+    <div id="paint" align="center">
+      <canvas id="myCanvas" align="center"></canvas>
+    </div>
+
+    <p>
+      Below is the recognized character.
+    </p>
+
+    <div id="predicted">
+      Recognized character
+      <div id="number"></div>
+      <button id="clear">Clear</button>
+    </div>
+
+    <!--
     <div id="signature-pad" class="signature-pad">
       <div class="signature-pad--body">
         <canvas></canvas>
@@ -76,7 +107,7 @@
         <div class="signature-pad--actions">
           <div>
             <button type="button" class="button clear" data-action="clear">Clear</button>
-            <!-- <button type="button" class="button" data-action="change-color">Change color</button> -->
+            <button type="button" class="button" data-action="change-color">Change color</button>
             <button type="button" class="button" data-action="undo">Undo</button>
             <button type="button" class="button" data-action="predict">Predict</button>
   
@@ -84,16 +115,27 @@
           <div>
             <button type="button" class="button save" data-action="save-png">Save as PNG</button>
             <button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
-            <!-- <button type="button" class="button save" data-action="save-svg">Save as SVG</button> -->
+            <button type="button" class="button save" data-action="save-svg">Save as SVG</button>
           </div>
         </div>
       </div>
     </div>
+    -->
+
     <center>
     
     <!-- JavaScript -->
-    <script src="js/signature_pad.umd.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/upload_file.js"></script>
+
+    <!-- Signature Pad -->
+    <!-- <script src="js/signature_pad.umd.js"></script> -->
+    <!-- <script src="js/app.js"></script> -->
+
+    <!-- File Upload Feature -->
+    <!-- <script src="js/upload_file.js"></script> -->
+
+    <!-- Image Prediction Feature -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.2/dist/tf.min.js"></script>
+    <script src="js/tensorflow.js"></script>
   </body>
 </html>
