@@ -56,7 +56,19 @@ canvas.addEventListener('mouseup', function() {
       input.push(data[i + 2] / 255);
     }
 
-    /* Invert black and white images to white and black images */
+    console.log("Original Input:");
+    console.log(input);
+
+    var sum = 0;
+    for (var i = 0; i < input.length; i += 1) {
+      sum += input[i];
+    }
+
+    var average = sum / (64*64);
+    console.log("Average for Original Input:");
+    console.log(average);
+    
+    /* Invert black and white images to white and black images
     for (var i = 0; i < input.length; i += 1) {
       var convertedNum = input[i] - 1;
 
@@ -66,6 +78,20 @@ canvas.addEventListener('mouseup', function() {
       
       input.splice(i, 1, convertedNum);
     }
+
+    console.log("Converted Input: ");
+    console.log(input);
+
+    var sum = 0;
+
+    for (var i = 0; i < input.length; i += 1) {
+      sum += input[i];
+    }
+
+    var average = sum / (64*64);
+    console.log("Average for Converted Input:");
+    console.log(average);
+    */
 
     predict(input);
   };
@@ -85,6 +111,7 @@ tf.loadLayersModel('file://WebAppModel/model.json').then(function(model) {
 /*
 tf.loadLayersModel('https://github.com/tyler-pruitt/Chinese-Character-Recognition/blob/main/docs/WebAppModel/model.json').then(function(model) {
   window.model = model;
+  console.log("Model Loaded Successfully.");
 });
 */
 
