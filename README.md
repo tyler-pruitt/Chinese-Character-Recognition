@@ -4,6 +4,14 @@ A repo for machine-learning powered image classification of handwritten Chinese 
 ## Website (Still in Progress)
 URL: https://tyler-pruitt.github.io/Chinese-Character-Recognition/
 
+### Convert Keras Model To Tensorflow.js for Web App
+
+```
+!pip install tensorflowjs
+
+!tensorflowjs_converter --input_format keras "model.h5" "docs/model"
+```
+
 ## Packages Used
 TensorFlow, Numpy, Pandas, Matplotlib, CV2, OS
 
@@ -122,11 +130,3 @@ For future reference let's call this directory 'folder1'.
 Change 'directory' to the /folder1/data/data/ directory. On macOS, this might like something like '/Users/user_name_here/Desktop/folder1/data/data/'.
 
 #### 4) Run the file 'ChinCharRecog.py' and enjoy!
-
-## Convert Keras Model To Tensorflow.js for Web App
-
-```
-!pip install tensorflowjs
-
-!tensorflowjs_converter --input_format keras "model.h5" "docs/model"
-```
