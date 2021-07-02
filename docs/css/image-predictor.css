@@ -35,11 +35,13 @@ text-align: center;
 }
 
 #character {
-text-align: center;
+/*text-align: center;*/
+margin: auto;
 }
 
 #accuracy {
-text-align: center;
+/*text-align: center;*/
+margin: auto;
 }
 
 #number {
