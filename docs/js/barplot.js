@@ -2,11 +2,11 @@ function barplot(probabilityData) {
     console.log("Bar Plot Probability Data:");
     console.log(probabilityData);
     console.log(probabilityData[0]);
-    
+
     if (probabilityData === undefined) {
         console.log("Model Output Probability Data is NOT Defined.");
     } else {
-        anychart.onDocumentReady(function(probabilityData) {
+        anychart.onDocumentReady(function() {
 
             // Set the data
             var data = {
