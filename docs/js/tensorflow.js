@@ -123,7 +123,7 @@ var predict = function(input) {
       console.log(tf.tensor(input).reshape([1, 64, 64]).data());
 
       // Process the data
-      var scores = scores[0];
+      scores = scores[0];
 
       // The processed output from the model
       console.log("Model Output:");
@@ -144,6 +144,8 @@ var predict = function(input) {
       console.log("Probability: " + probabilityDisplay);
 
       $('#number').html(predictedCharacter);
+
+      barplot(scores);
     });
   } else {
     // The model takes a bit to load, if we are too fast, wait
