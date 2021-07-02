@@ -145,7 +145,8 @@ var predict = function(input) {
 
       $('#number').html(predictedCharacter);
 
-      barplot(scores);
+      var modelOutput = scores;
+      barplot(modelOutput);
     });
   } else {
     // The model takes a bit to load, if we are too fast, wait
