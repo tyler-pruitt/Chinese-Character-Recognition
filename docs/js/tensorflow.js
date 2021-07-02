@@ -141,7 +141,8 @@ canvas.addEventListener('touchmove', function (e) {
 
 var predict = function(input) {
   if (window.model) {
-    window.model.predict([tf.tensor(input).reshape([1, 64, 64, 1])]).array().then(function(scores){
+    //window.model.predict([tf.tensor(input).reshape([1, 64, 64, 1])]).array().then(function(scores){
+    window.model.predict([tf.tensor(input).reshape([1, 64, 64])]).array().then(function(scores){
       // The output from the model
       console.log("Raw Model Output:");
       console.log(scores);
