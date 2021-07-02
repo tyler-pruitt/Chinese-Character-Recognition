@@ -19,23 +19,25 @@ border:3px solid red;
 margin: auto;
 }
 
+#clear {
+margin: auto;
+margin-top: 20px;
+margin-bottom: 20px;
+padding: 10px;
+text-align: center;
+}
+
 #predicted { 
 font-size: 30px;
-margin-top: 60px;
+margin-top: 30px;
 text-align: center;
 }
 
 #number {
-border: 3px solid black;
+/*border: 3px solid black;*/
 margin: auto;
 margin-top: 30px;
+margin-bottom: 30px;
 text-align: center;
 vertical-align: middle;
-}
-
-#clear {
-margin: auto;
-margin-top: 70px;
-padding: 30px;
-text-align: center;
 }

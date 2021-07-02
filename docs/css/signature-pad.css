@@ -23,6 +23,7 @@ body {
   margin: 0;
   padding: 32px 16px;
   font-family: Helvetica, Sans-Serif;
+  
   /*overflow:scroll;
   overflow-y:scroll;
   overflow-x:scroll;*/
@@ -41,13 +42,17 @@ body {
   font-size: 10px;
   width: 512px;
   height: 512px;
-  /*width: 50%;
-  height: 50%;*/
   border: 1px solid #e8e8e8;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.08) inset;
   border-radius: 4px;
   padding: 16px;
+
+  /*margin: auto;
+  height: auto;*/
+
+  /*width: 50%;
+  height: 50%;*/
 }
 
 .signature-pad::before,
@@ -80,6 +85,8 @@ body {
       -ms-flex: 1;
           flex: 1;
   border: 1px solid #f4f4f4;
+
+  /*min-height: 360px;*/
 }
 
 .signature-pad--body
@@ -108,7 +115,19 @@ canvas {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 8px;
+
+  /*overflow: hidden;*/
 }
+
+/*
+.signature-pad--actions > div:first-child {
+  float: left;
+}
+
+.signature-pad--actions > div:last-child {
+  float: right;
+}
+*/
 
 #github img {
   border: 0;

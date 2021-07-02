@@ -3,7 +3,7 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="description" content="Signature Pad - HTML5 canvas based smooth signature drawing using variable width spline interpolation.">
+    <meta name="description" content="Chinese Character Recognition">
 
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
@@ -15,10 +15,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/signature-pad.css"> -->
     <link rel="stylesheet" href = "css/image-predictor.css">
-
-    <!--[if IE]>
-    <link rel="stylesheet" type="text/css" href="css/ie9.css">
-    <![endif]-->
 
     <title>Chinese Character Recognition</title>
 
@@ -65,9 +61,6 @@
       七，八，九，十，百，千，万，and 亿.
       <br> 2) Download your drawing either as an PNG or JPG image
       <br> 3) Upload this image to have the model predict what character it is
-      <br>
-      <br> Updated: Jun 30, 2021
-      <br> Copyright 2021 Tyler Pruitt
     </p>
 
     <!--
@@ -90,11 +83,18 @@
       Below is the recognized character.
     </p>
 
+    <button id="clear">Clear</button>
+
     <div id="predicted">
-      Recognized character
+      Recognized character:
       <div id="number"></div>
-      <button id="clear">Clear</button>
+      <!-- <button id="clear">Clear</button> -->
     </div>
+
+    <p>
+      <br> Updated: Jul 1, 2021
+      <br> Copyright 2021 Tyler Pruitt
+    </p>
 
     <!--
     <div id="signature-pad" class="signature-pad">

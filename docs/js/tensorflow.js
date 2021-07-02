@@ -51,7 +51,7 @@ canvas.addEventListener('mouseup', function() {
     data = context.getImageData(0, 0, 64, 64).data;
     var input = [];
 
-    /* Given that we are drawing Blue into the canvas, we can slice the array in chunks of four and take every second element */
+    // Given that we are drawing Blue into the canvas, we can slice the array in chunks of four and take every second element
     for(var i = 0; i < data.length; i += 4) {
       input.push(data[i + 2] / 255);
     }
@@ -103,7 +103,9 @@ var onPaint = function() {
   context.stroke();
 };
 
-tf.loadLayersModel('file://WebAppModel/model.json').then(function(model) {
+// $('#number').html('零');
+
+tf.loadLayersModel('model/model.json').then(function(model) {
   window.model = model;
   console.log("Model Loaded Successfully.");
 });
@@ -140,10 +142,28 @@ canvas.addEventListener('touchmove', function (e) {
 var predict = function(input) {
   if (window.model) {
     window.model.predict([tf.tensor(input).reshape([1, 64, 64, 1])]).array().then(function(scores){
-      scores = scores[0];
+      // The output from the model
+      console.log("Raw Model Output:");
       console.log(scores);
-      predicted = scores.indexOf(Math.max(...scores));
-      $('#number').html(predicted);
+      
+      // Process the data
+      scores = scores[0];
+
+      // The processed output from the model
+      console.log("Processed Model Output:");
+      console.log(scores);
+
+      var predictedIndex = scores.indexOf(Math.max(...scores));
+      console.log("Predicted Index:");
+      console.log(predictedIndex);
+
+      var characters = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '亿'];
+
+      var predictedCharacter = characters[predictedIndex];
+      console.log("Predicted Character:");
+      console.log(predictedCharacter);
+
+      $('#number').html(predictedCharacter);
     });
   } else {
     // The model takes a bit to load, if we are too fast, wait
