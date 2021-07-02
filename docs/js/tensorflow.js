@@ -3,10 +3,12 @@ var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.
 if (isMobile) {
   $('#paint').css({'width': '60%'});
   $('#number').css({'width': '30%', 'font-size': '240px'});
+  $('#predict_button').css({'font-size': '50px'});
   $('#clear').css({'font-size': '50px'});
 } else {
   $('#paint').css({'width': '300px'});
   $('#number').css({'width': '150px', 'font-size': '120px'});
+  $('#predict_button').css({'font-size': '35px'});
   $('#clear').css({'font-size': '35px'});
 }
 
