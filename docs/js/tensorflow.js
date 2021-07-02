@@ -93,6 +93,10 @@ canvas.addEventListener('mouseup', function() {
     console.log(average);
     */
 
+    // Model Input Data
+    console.log("Model Input:");
+    console.log([tf.tensor(input).reshape([1, 64, 64])]);
+
     predict(input);
   };
   img.src = canvas.toDataURL('image/png');
@@ -109,13 +113,6 @@ tf.loadLayersModel('model/model.json').then(function(model) {
   window.model = model;
   console.log("Model Loaded Successfully.");
 });
-
-/*
-tf.loadLayersModel('https://github.com/tyler-pruitt/Chinese-Character-Recognition/blob/main/docs/WebAppModel/model.json').then(function(model) {
-  window.model = model;
-  console.log("Model Loaded Successfully.");
-});
-*/
 
 // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
 // Set up touch events for mobile, etc
