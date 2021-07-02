@@ -145,8 +145,8 @@ var predict = function(input) {
 
       $('#number').html(predictedCharacter);
 
-      var modelOutput = scores;
-      barplot(modelOutput);
+      // Create bar plot
+      barplot(scores);
     });
   } else {
     // The model takes a bit to load, if we are too fast, wait
@@ -164,4 +164,7 @@ $('#clear').click(function(){
   $('#character').html('');
   $('#probability').html('');
   $('#number').html('');
+
+  // Clear bar plot
+  barplot([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 });
