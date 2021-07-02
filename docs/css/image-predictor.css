@@ -15,7 +15,8 @@ width: 50%;
 }
 
 #paint {
-border:3px solid red;
+/*Don't need a red border if the canvas is black*/
+/*border:3px solid red;*/
 margin: auto;
 }
 

@@ -31,10 +31,16 @@ canvas.addEventListener('mousemove', function(e) {
   mouse.y = e.pageY - this.offsetTop;
 }, false);
 
-context.lineWidth = isMobile ? 60 : 25;
+context.lineWidth = isMobile ? 40 : 15;
 context.lineJoin = 'round';
 context.lineCap = 'round';
-context.strokeStyle = '#0000FF';
+
+// Blue: '#0000FF', Black: '#000000', White: '#ffffff'
+context.strokeStyle = '#ffffff';
+
+// Make the canvas black instead of white
+context.fillStyle='black';
+context.fillRect(0,0,canvas.width,canvas.height);
 
 canvas.addEventListener('mousedown', function(e) {
   context.moveTo(mouse.x, mouse.y);
@@ -51,7 +57,8 @@ canvas.addEventListener('mouseup', function() {
     data = context.getImageData(0, 0, 64, 64).data;
     var input = [];
 
-    // Given that we are drawing Blue into the canvas, we can slice the array in chunks of four and take every second element
+    /* Given that we are drawing Blue into the canvas, 
+    we can slice the array in chunks of four and take every second element*/
     for(var i = 0; i < data.length; i += 4) {
       input.push(data[i + 2] / 255);
     }
@@ -95,7 +102,7 @@ canvas.addEventListener('mouseup', function() {
 
     // Model Input Data
     console.log("Model Input:");
-    console.log([tf.tensor(input).reshape([1, 64, 64])]);
+    console.log(tf.tensor(input).reshape([1, 64, 64]).data());
 
     predict(input);
   };
@@ -106,8 +113,6 @@ var onPaint = function() {
   context.lineTo(mouse.x, mouse.y);
   context.stroke();
 };
-
-// $('#number').html('零');
 
 tf.loadLayersModel('model/model.json').then(function(model) {
   window.model = model;
@@ -171,5 +176,10 @@ var predict = function(input) {
 
 $('#clear').click(function(){
   context.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // If canvas is black, replace black color after clearing the canvas
+  context.fillStyle='black';
+  context.fillRect(0,0,canvas.width,canvas.height);
+
   $('#number').html('');
 });
