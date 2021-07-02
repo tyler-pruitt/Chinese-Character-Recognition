@@ -72,8 +72,7 @@ canvas.addEventListener('mouseup', function() {
     }
 
     var average = sum / (64*64);
-    console.log("Average for Original Input:");
-    console.log(average);
+    console.log("Average for Input: " + average);
     
     /* Invert black and white images to white and black images
     for (var i = 0; i < input.length; i += 1) {
@@ -86,8 +85,7 @@ canvas.addEventListener('mouseup', function() {
       input.splice(i, 1, convertedNum);
     }
 
-    console.log("Converted Input: ");
-    console.log(input);
+    console.log("Converted Input: " + input);
 
     var sum = 0;
 
@@ -96,8 +94,7 @@ canvas.addEventListener('mouseup', function() {
     }
 
     var average = sum / (64*64);
-    console.log("Average for Converted Input:");
-    console.log(average);
+    console.log("Average for Converted Input: " + average);
     */
 
     // Model Input Data
@@ -145,26 +142,26 @@ var predict = function(input) {
   if (window.model) {
     //window.model.predict([tf.tensor(input).reshape([1, 64, 64, 1])]).array().then(function(scores){
     window.model.predict([tf.tensor(input).reshape([1, 64, 64])]).array().then(function(scores){
-      // The output from the model
-      console.log("Raw Model Output:");
-      console.log(scores);
-      
       // Process the data
       scores = scores[0];
 
       // The processed output from the model
-      console.log("Processed Model Output:");
+      console.log("Model Output:");
       console.log(scores);
 
       var predictedIndex = scores.indexOf(Math.max(...scores));
-      console.log("Predicted Index:");
-      console.log(predictedIndex);
+      console.log("Predicted Index: " + predictedIndex);
 
       var characters = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '亿'];
 
       var predictedCharacter = characters[predictedIndex];
-      console.log("Predicted Character:");
-      console.log(predictedCharacter);
+      $('#character').html(predictedCharacter);
+      console.log("Predicted Character: " + predictedCharacter);
+
+      var accuracy = scores[predictedIndex] * 100;
+      var accuracyDisplay = accuracy.toString() + "%";
+      $('#accuracy').html(accuracyDisplay);
+      console.log("Accuracy: " + accuracyDisplay);
 
       $('#number').html(predictedCharacter);
     });
@@ -181,5 +178,7 @@ $('#clear').click(function(){
   context.fillStyle='black';
   context.fillRect(0,0,canvas.width,canvas.height);
 
+  $('#character').html('');
+  $('#accuracy').html('');
   $('#number').html('');
 });
