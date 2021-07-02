@@ -144,6 +144,8 @@ var predict = function(input) {
       console.log("Probability: " + probabilityDisplay);
 
       $('#number').html(predictedCharacter);
+
+      barplot(scores);
     });
   } else {
     // The model takes a bit to load, if we are too fast, wait

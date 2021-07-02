@@ -62,10 +62,10 @@ vertical-align: middle;
 }
 
 #container {
-    width: 75%;
-    /*height: 100%;*/
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding: 0;
-  }
+width: 75%;
+height: 100%;
+margin: auto;
+margin-top: 30px;
+margin-bottom: 30px;
+padding: 0;
+}
