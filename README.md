@@ -126,5 +126,7 @@ Change 'directory' to the /folder1/data/data/ directory. On macOS, this might li
 ## Convert Keras Model To Tensorflow.js for Web App
 
 ```
-!tensorflowjs_converter --input_format keras "model.h5" "docs/WebAppModel"
+!pip install tensorflowjs
+
+!tensorflowjs_converter --input_format keras "model.h5" "docs/model"
 ```
