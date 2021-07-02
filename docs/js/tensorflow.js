@@ -8,8 +8,8 @@ if (isMobile) {
 } else {
   $('#paint').css({'width': '300px'});
   $('#number').css({'width': '150px', 'font-size': '120px'});
-  $('#predict_button').css({'font-size': '35px'});
-  $('#clear').css({'font-size': '35px'});
+  $('#predict_button').css({'font-size': '30px'});
+  $('#clear').css({'font-size': '30px'});
 }
 
 var cw = $('#paint').width();
@@ -50,41 +50,6 @@ canvas.addEventListener('mousedown', function(e) {
   canvas.addEventListener('mousemove', onPaint, false);
 }, false);
 
-/*
-canvas.addEventListener('mouseup', function() {
-  $('#number').html('<img id="spinner" src="spinner.gif"/>');
-  canvas.removeEventListener('mousemove', onPaint, false);
-  var img = new Image();
-  img.onload = function() {
-    context.drawImage(img, 0, 0, 64, 64);
-    data = context.getImageData(0, 0, 64, 64).data;
-    var input = [];
-
-    for(var i = 0; i < data.length; i += 4) {
-      input.push(data[i + 2] / 255);
-    }
-
-    console.log("Original Input:");
-    console.log(input);
-
-    var sum = 0;
-    for (var i = 0; i < input.length; i += 1) {
-      sum += input[i];
-    }
-
-    var average = sum / (64*64);
-    console.log("Average for Input: " + average);
-
-    // Model Input Data
-    console.log("Model Input:");
-    console.log(tf.tensor(input).reshape([1, 64, 64]).data());
-
-    predict(input);
-  };
-  img.src = canvas.toDataURL('image/png');
-}, false);
-*/
-
 canvas.addEventListener('mouseup', function() {
   canvas.removeEventListener('mousemove', onPaint, false);
 }, false);
@@ -112,10 +77,6 @@ $('#predict_button').click(function(){
 
     var average = sum / (64*64);
     console.log("Average for Input: " + average);
-
-    // Model Input Data
-    console.log("Model Input:");
-    console.log(tf.tensor(input).reshape([1, 64, 64]).data());
 
     predict(input);
   };
@@ -157,6 +118,10 @@ canvas.addEventListener('touchmove', function (e) {
 var predict = function(input) {
   if (window.model) {
     window.model.predict([tf.tensor(input).reshape([1, 64, 64])]).array().then(function(scores){
+      // Model Input Data
+      console.log("Model Input:");
+      console.log(tf.tensor(input).reshape([1, 64, 64]).data());
+
       // Process the data
       scores = scores[0];
 
@@ -173,10 +138,10 @@ var predict = function(input) {
       $('#character').html(predictedCharacter);
       console.log("Predicted Character: " + predictedCharacter);
 
-      var accuracy = scores[predictedIndex] * 100;
-      var accuracyDisplay = accuracy.toString() + "%";
-      $('#accuracy').html(accuracyDisplay);
-      console.log("Accuracy: " + accuracyDisplay);
+      var probability = scores[predictedIndex] * 100;
+      var probabilityDisplay = probability.toString() + "%";
+      $('#probability').html(probabilityDisplay);
+      console.log("Probability: " + probabilityDisplay);
 
       $('#number').html(predictedCharacter);
     });
@@ -194,6 +159,6 @@ $('#clear').click(function(){
   context.fillRect(0,0,canvas.width,canvas.height);
 
   $('#character').html('');
-  $('#accuracy').html('');
+  $('#probability').html('');
   $('#number').html('');
 });

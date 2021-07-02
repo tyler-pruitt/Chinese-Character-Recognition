@@ -13,8 +13,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="css/signature-pad.css"> -->
-    <link rel="stylesheet" href = "css/image-predictor.css">
+    <link rel="stylesheet" href = "index.css">
 
     <title>Chinese Character Recognition</title>
 
@@ -29,6 +28,9 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+
+    <!-- Bar Plot Scripts -->
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
 
     <!-- Image Prediction Scripts -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -94,48 +96,24 @@
 
     <div id="predicted">
       Recognized character: <div id="character"></div>
-      Probability: <div id="accuracy"></div>
+      Probability: <div id="probability"></div>
       <div id="number"></div>
     </div>
+
+    <!-- Bar Plot -->
+    <div id="container" style="width: 100%; height: 100%"></div>
 
     <p>
       <br> Updated: Jul 2, 2021
       <br> Copyright 2021 Tyler Pruitt
     </p>
 
-    <!--
-    <div id="signature-pad" class="signature-pad">
-      <div class="signature-pad--body">
-        <canvas></canvas>
-      </div>
-      <div class="signature-pad--footer">
-        <div class="description">Write above</div>
-  
-        <div class="signature-pad--actions">
-          <div>
-            <button type="button" class="button clear" data-action="clear">Clear</button>
-            <button type="button" class="button" data-action="change-color">Change color</button>
-            <button type="button" class="button" data-action="undo">Undo</button>
-            <button type="button" class="button" data-action="predict">Predict</button>
-  
-          </div>
-          <div>
-            <button type="button" class="button save" data-action="save-png">Save as PNG</button>
-            <button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
-            <button type="button" class="button save" data-action="save-svg">Save as SVG</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    -->
-
     <center>
     
     <!-- JavaScript -->
 
-    <!-- Signature Pad -->
-    <!-- <script src="js/signature_pad.umd.js"></script> -->
-    <!-- <script src="js/app.js"></script> -->
+    <!-- Bar Plot Feature -->
+    <script src="js/barplot.js"></script>
 
     <!-- File Upload Feature -->
     <script src="js/upload_file.js"></script>
