@@ -48,6 +48,7 @@ canvas.addEventListener('mousedown', function(e) {
   canvas.addEventListener('mousemove', onPaint, false);
 }, false);
 
+/*
 canvas.addEventListener('mouseup', function() {
   $('#number').html('<img id="spinner" src="spinner.gif"/>');
   canvas.removeEventListener('mousemove', onPaint, false);
@@ -57,8 +58,6 @@ canvas.addEventListener('mouseup', function() {
     data = context.getImageData(0, 0, 64, 64).data;
     var input = [];
 
-    /* Given that we are drawing Blue into the canvas, 
-    we can slice the array in chunks of four and take every second element*/
     for(var i = 0; i < data.length; i += 4) {
       input.push(data[i + 2] / 255);
     }
@@ -73,29 +72,6 @@ canvas.addEventListener('mouseup', function() {
 
     var average = sum / (64*64);
     console.log("Average for Input: " + average);
-    
-    /* Invert black and white images to white and black images
-    for (var i = 0; i < input.length; i += 1) {
-      var convertedNum = input[i] - 1;
-
-      if (convertedNum < 0) {
-        convertedNum = 0 - convertedNum;
-      }
-      
-      input.splice(i, 1, convertedNum);
-    }
-
-    console.log("Converted Input: " + input);
-
-    var sum = 0;
-
-    for (var i = 0; i < input.length; i += 1) {
-      sum += input[i];
-    }
-
-    var average = sum / (64*64);
-    console.log("Average for Converted Input: " + average);
-    */
 
     // Model Input Data
     console.log("Model Input:");
@@ -105,6 +81,44 @@ canvas.addEventListener('mouseup', function() {
   };
   img.src = canvas.toDataURL('image/png');
 }, false);
+*/
+
+canvas.addEventListener('mouseup', function() {
+  canvas.removeEventListener('mousemove', onPaint, false);
+}, false);
+
+$('#predict_button').click(function(){
+  $('#number').html('<img id="spinner" src="spinner.gif"/>');
+  /*canvas.removeEventListener('mousemove', onPaint, false);*/
+  var img = new Image();
+  img.onload = function() {
+    context.drawImage(img, 0, 0, 64, 64);
+    data = context.getImageData(0, 0, 64, 64).data;
+    var input = [];
+
+    for(var i = 0; i < data.length; i += 4) {
+      input.push(data[i + 2] / 255);
+    }
+
+    console.log("Original Input:");
+    console.log(input);
+
+    var sum = 0;
+    for (var i = 0; i < input.length; i += 1) {
+      sum += input[i];
+    }
+
+    var average = sum / (64*64);
+    console.log("Average for Input: " + average);
+
+    // Model Input Data
+    console.log("Model Input:");
+    console.log(tf.tensor(input).reshape([1, 64, 64]).data());
+
+    predict(input);
+  };
+  img.src = canvas.toDataURL('image/png');
+});
 
 var onPaint = function() {
   context.lineTo(mouse.x, mouse.y);
@@ -140,7 +154,6 @@ canvas.addEventListener('touchmove', function (e) {
 
 var predict = function(input) {
   if (window.model) {
-    //window.model.predict([tf.tensor(input).reshape([1, 64, 64, 1])]).array().then(function(scores){
     window.model.predict([tf.tensor(input).reshape([1, 64, 64])]).array().then(function(scores){
       // Process the data
       scores = scores[0];

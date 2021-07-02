@@ -20,6 +20,14 @@ width: 50%;
 margin: auto;
 }
 
+#predict_button {
+margin: auto;
+margin-top: 20px;
+margin-bottom: 20px;
+padding: 10px;
+text-align: center;
+}
+
 #clear {
 margin: auto;
 margin-top: 20px;
