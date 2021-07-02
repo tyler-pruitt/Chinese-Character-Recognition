@@ -123,7 +123,7 @@ var predict = function(input) {
       console.log(tf.tensor(input).reshape([1, 64, 64]).data());
 
       // Process the data
-      scores = scores[0];
+      var scores = scores[0];
 
       // The processed output from the model
       console.log("Model Output:");
