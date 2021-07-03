@@ -116,7 +116,7 @@ canvas.addEventListener('touchmove', function (e) {
 }, false);
 
 // Create bar plot
-initializeBarPlot([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+var chart = initializeBarPlot([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
 
 var predict = function(input) {
   if (window.model) {

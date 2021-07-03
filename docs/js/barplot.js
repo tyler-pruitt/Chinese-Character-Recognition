@@ -43,6 +43,8 @@ function initializeBarPlot(modelOutput) {
             // Draw
             chart.container("container");
             chart.draw();
+
+            return chart;
         });
     }
 }
