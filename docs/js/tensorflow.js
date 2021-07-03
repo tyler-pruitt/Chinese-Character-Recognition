@@ -164,7 +164,4 @@ $('#clear').click(function(){
   $('#character').html('');
   $('#probability').html('');
   $('#number').html('');
-
-  // Clear bar plot
-  barplot([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 });
