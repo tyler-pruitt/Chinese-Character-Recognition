@@ -70,14 +70,6 @@ $('#predict_button').click(function(){
     console.log("Original Input:");
     console.log(input);
 
-    var sum = 0;
-    for (var i = 0; i < input.length; i += 1) {
-      sum += input[i];
-    }
-
-    var average = sum / (64*64);
-    console.log("Average for Input: " + average);
-
     predict(input);
   };
   img.src = canvas.toDataURL('image/png');
