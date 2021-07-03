@@ -107,9 +107,6 @@ canvas.addEventListener('touchmove', function (e) {
   }));
 }, false);
 
-// Create bar plot
-var chart = initializeBarPlot([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
-
 var predict = function(input) {
   if (window.model) {
     window.model.predict([tf.tensor(input).reshape([1, 64, 64])]).array().then(function(scores){
@@ -140,10 +137,9 @@ var predict = function(input) {
 
       $('#number').html(predictedCharacter);
 
-      // Update bar plot with data
-      for (var i=0;i<15;i+=1) {
-        addPoint(characters[i], scores[i]);
-      }
+      // Update bar plot with data (first remove previous data and then add new data)
+      removeData(barchart);
+      addData(barchart, characters, scores);
     });
   } else {
     // The model takes a bit to load, if we are too fast, wait
@@ -161,4 +157,8 @@ $('#clear').click(function(){
   $('#character').html('');
   $('#probability').html('');
   $('#number').html('');
+
+  // Remove existing data and insert zeros
+  removeData(barchart);
+  addData(barchart, characters, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 });

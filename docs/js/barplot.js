@@ -1,64 +1,92 @@
-function initializeBarPlot(modelOutput) {
-    console.log("Initializing Bar Plot ...");
+var ctx = document.getElementById("barchart");
 
-    anychart.onDocumentReady(function() {
+var barchart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "百", "千", "万", "亿"],
+    datasets: [{
+      label: 'Probability for Each Character',
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: false,
+    scales: {
+      xAxes: [{
+        ticks: {
+          maxRotation: 90,
+          minRotation: 80
+        },
+          gridLines: {
+          offsetGridLines: true // à rajouter
+        }
+      },
+      {
+        position: "top",
+        ticks: {
+          maxRotation: 90,
+          minRotation: 80
+        },
+        gridLines: {
+          offsetGridLines: true // et matcher pareil ici
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
 
-        // Set the data
-        /*var data = {
-            header: ["Character", "Probability"],
-            rows: [
-            ["零", modelOutput[0]],
-            ["一", modelOutput[1]],
-            ["二", modelOutput[2]],
-            ["三", modelOutput[3]],
-            ["四", modelOutput[4]],
-            ["五", modelOutput[5]],
-            ["六", modelOutput[6]],
-            ["七", modelOutput[7]],
-            ["八", modelOutput[8]],
-            ["九", modelOutput[9]],
-            ["十", modelOutput[10]],
-            ["百", modelOutput[11]],
-            ["千", modelOutput[12]],
-            ["万", modelOutput[13]],
-            ["亿", modelOutput[14]],
-        ]};*/
-
-        var data = anychart.data.set([
-            {x: "零", value: modelOutput[0]},
-            {x: "一", value: modelOutput[1]},
-            {x: "二", value: modelOutput[2]},
-            {x: "三", value: modelOutput[3]},
-            {x: "四", value: modelOutput[4]},
-            {x: "五", value: modelOutput[5]},
-            {x: "六", value: modelOutput[6]},
-            {x: "七", value: modelOutput[7]},
-            {x: "八", value: modelOutput[8]},
-            {x: "九", value: modelOutput[9]},
-            {x: "十", value: modelOutput[10]},
-            {x: "百", value: modelOutput[11]},
-            {x: "千", value: modelOutput[12]},
-            {x: "万", value: modelOutput[13]},
-            {x: "亿", value: modelOutput[14]},
-        ]);
-        
-        // Create the chart
-        var chart = anychart.column();
-        
-        // Add data
-        chart.data(data);
-        
-        // Set the chart title
-        chart.title("");
-        
-        // Draw
-        chart.container("container");
-        chart.draw();
-
-        function addPoint(char, prob) {
-            // Append data
-            data.append({x: char, value: prob});
-        };
+function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
     });
+    chart.update();
 }
 
+function removeData(chart) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.pop();
+    });
+    chart.update();
+}
