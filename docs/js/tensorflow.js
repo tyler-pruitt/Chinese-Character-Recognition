@@ -56,7 +56,7 @@ canvas.addEventListener('mouseup', function() {
 
 $('#predict_button').click(function(){
   $('#number').html('<img id="spinner" src="spinner.gif"/>');
-  /*canvas.removeEventListener('mousemove', onPaint, false);*/
+  
   var img = new Image();
   img.onload = function() {
     context.drawImage(img, 0, 0, 64, 64);
@@ -67,7 +67,7 @@ $('#predict_button').click(function(){
       input.push(data[i + 2] / 255);
     }
 
-    console.log("Original Input:");
+    console.log("Image Data:");
     console.log(input);
 
     predict(input);
@@ -122,7 +122,6 @@ var predict = function(input) {
       console.log(scores);
 
       var predictedIndex = scores.indexOf(Math.max(...scores));
-      console.log("Predicted Index: " + predictedIndex);
 
       var characters = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '亿'];
 
