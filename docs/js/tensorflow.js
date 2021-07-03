@@ -167,6 +167,8 @@ $('#clear').click(function(){
   for (var i=0;i<15;i+=1) {
     removeData(barchart);
   }
+  
+  var characters = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '亿'];
 
   for (var i=0;i<15;i+=1) {
     addData(barchart, characters[i], 0);
