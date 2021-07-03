@@ -138,8 +138,13 @@ var predict = function(input) {
       $('#number').html(predictedCharacter);
 
       // Update bar plot with data (first remove previous data and then add new data)
-      removeData(barchart);
-      addData(barchart, characters, scores);
+      for (var i=0;i<15;i+=1) {
+        removeData(barchart);
+      }
+
+      for (var i=0;i<15;i+=1) {
+        addData(barchart, characters[i], scores[i]);
+      }
     });
   } else {
     // The model takes a bit to load, if we are too fast, wait
@@ -159,6 +164,11 @@ $('#clear').click(function(){
   $('#number').html('');
 
   // Remove existing data and insert zeros
-  removeData(barchart);
-  addData(barchart, characters, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  for (var i=0;i<15;i+=1) {
+    removeData(barchart);
+  }
+
+  for (var i=0;i<15;i+=1) {
+    addData(barchart, characters[i], 0);
+  }
 });
