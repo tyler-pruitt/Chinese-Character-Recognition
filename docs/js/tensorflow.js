@@ -115,6 +115,9 @@ canvas.addEventListener('touchmove', function (e) {
   }));
 }, false);
 
+// Create bar plot
+initializeBarPlot([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+
 var predict = function(input) {
   if (window.model) {
     window.model.predict([tf.tensor(input).reshape([1, 64, 64])]).array().then(function(scores){
@@ -145,8 +148,8 @@ var predict = function(input) {
 
       $('#number').html(predictedCharacter);
 
-      // Create bar plot
-      barplot(scores);
+      // Update bar plot with data
+      updateBarPlot(scores);
     });
   } else {
     // The model takes a bit to load, if we are too fast, wait
