@@ -47,9 +47,9 @@ function initializeBarPlot(modelOutput) {
     }
 }
 
-function updateBarPlot(modelOutput) {
+function updateBarPlot(chart, modelOutput) {
     console.log("Updating Bar Plot ...");
-    
+
     console.log("Bar Plot Data:");
     console.log(modelOutput);
     console.log(modelOutput[0]);

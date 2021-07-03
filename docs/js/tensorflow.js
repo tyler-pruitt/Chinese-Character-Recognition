@@ -149,7 +149,7 @@ var predict = function(input) {
       $('#number').html(predictedCharacter);
 
       // Update bar plot with data
-      updateBarPlot(scores);
+      updateBarPlot(chart, scores);
     });
   } else {
     // The model takes a bit to load, if we are too fast, wait
