@@ -3,13 +3,13 @@ var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.
 
 // Set up mobile settings
 if (isMobile) {
-  $('#paint').css({'width': '75%'});
-  $('#bigCharacter').css({'width': '30%', 'font-size': '100px'});
+  $('#paint').css({'width': '60%'});
+  $('#character').css({'width': '30%', 'font-size': '100px'});
   $('#predictButton').css({'font-size': '40px'});
   $('#clearButton').css({'font-size': '40px'});
 } else {
   $('#paint').css({'width': '300px'});
-  $('#bigCharacter').css({'width': '150px', 'font-size': '120px'});
+  $('#character').css({'width': '150px', 'font-size': '120px'});
   $('#predictButton').css({'font-size': '20px'});
   $('#clearButton').css({'font-size': '20px'});
 }
@@ -17,8 +17,8 @@ if (isMobile) {
 var cw = $('#paint').width();
 $('#paint').css({'height': cw + 'px'});
 
-cw = $('#bigCharacter').width();
-$('#bigCharacter').css({'height': cw + 'px'});
+cw = $('#character').width();
+$('#character').css({'height': cw + 'px'});
 
 // From https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
 var canvas = document.getElementById('myCanvas');
@@ -64,7 +64,7 @@ canvas.addEventListener('mouseup', function() {
 // Predict button
 $('#predictButton').click(function(){
   // Insert loading spinner into number slot
-  $('#bigCharacter').html('<img id="spinner" src="spinner.gif"/>');
+  $('#character').html('<img id="spinner" src="spinner.gif"/>');
   
   // Retrieve image data
   var img = new Image();
@@ -181,8 +181,6 @@ var predict = function(input) {
       var roundedProbabilityDisplay = roundedProbability.toString() + "%";
       $('#probability').html(roundedProbabilityDisplay);
 
-      $('#bigCharacter').html(predictedCharacter);
-
       // Update bar plot with data
       // First remove previous data
       for (var i=0;i<15;i+=1) {
@@ -210,7 +208,6 @@ $('#clearButton').click(function(){
 
   $('#character').html('');
   $('#probability').html('');
-  $('#bigCharacter').html('');
 
   // Remove existing data in bar chart
   for (var i=0;i<15;i+=1) {
