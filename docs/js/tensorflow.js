@@ -121,7 +121,6 @@ canvas.addEventListener('touchmove', function (e) {
   }));
 }, false);
 
-/*
 // Get the position of a touch relative to the canvas
 function getTouchPos(canvasDom, touchEvent) {
   var rect = canvasDom.getBoundingClientRect();
@@ -149,7 +148,6 @@ document.body.addEventListener("touchmove", function (e) {
     e.preventDefault();
   }
 }, false);
-*/
 
 // Prediction function
 var predict = function(input) {
