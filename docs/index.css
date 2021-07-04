@@ -16,7 +16,7 @@ width: 50%;
 margin: auto;
 }
 
-#predict_button {
+#predictButton {
 margin: auto;
 margin-top: 5px;
 margin-bottom: 15px;
@@ -24,7 +24,7 @@ padding: 10px;
 text-align: center;
 }
 
-#clear {
+#clearButton {
 margin: auto;
 margin-top: 5px;
 margin-bottom: 15px;
@@ -46,7 +46,7 @@ margin: auto;
 margin: auto;
 }
 
-#number {
+#bigCharacter {
 margin: auto;
 margin-top: 30px;
 margin-bottom: 30px;
