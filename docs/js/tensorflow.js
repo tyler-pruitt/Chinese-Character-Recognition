@@ -4,12 +4,14 @@ var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.
 // Set up mobile settings
 if (isMobile) {
   $('#paint').css({'width': '60%'});
-  $('#character').css({'width': '30%', 'font-size': '100px'});
+  //$('#character').css({'width': '30%', 'font-size': '100px'});
+  $('#character').css({'font-size': '100px'});
   $('#predictButton').css({'font-size': '40px'});
   $('#clearButton').css({'font-size': '40px'});
 } else {
   $('#paint').css({'width': '300px'});
-  $('#character').css({'width': '150px', 'font-size': '120px'});
+  //$('#character').css({'width': '150px', 'font-size': '120px'});
+  $('#character').css({'font-size': '120px'});
   $('#predictButton').css({'font-size': '20px'});
   $('#clearButton').css({'font-size': '20px'});
 }
@@ -17,8 +19,8 @@ if (isMobile) {
 var cw = $('#paint').width();
 $('#paint').css({'height': cw + 'px'});
 
-cw = $('#character').width();
-$('#character').css({'height': cw + 'px'});
+/*cw = $('#character').width();
+$('#character').css({'height': cw + 'px'});*/
 
 // From https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
 var canvas = document.getElementById('myCanvas');
