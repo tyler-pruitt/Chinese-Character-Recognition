@@ -8,8 +8,8 @@ if (isMobile) {
 } else {
   $('#paint').css({'width': '300px'});
   $('#number').css({'width': '150px', 'font-size': '120px'});
-  $('#predict_button').css({'font-size': '30px'});
-  $('#clear').css({'font-size': '30px'});
+  $('#predict_button').css({'font-size': '20px'});
+  $('#clear').css({'font-size': '20px'});
 }
 
 var cw = $('#paint').width();
@@ -33,7 +33,7 @@ canvas.addEventListener('mousemove', function(e) {
   mouse.y = e.pageY - this.offsetTop;
 }, false);
 
-context.lineWidth = isMobile ? 40 : 15;
+context.lineWidth = isMobile ? 40 : 10;
 context.lineJoin = 'round';
 context.lineCap = 'round';
 
