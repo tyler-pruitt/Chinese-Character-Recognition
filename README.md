@@ -1,10 +1,10 @@
 # Chinese-Character-Recognition
 A repo for machine-learning powered image classification of handwritten Chinese characters
 
-## Website (Still in Progress)
+## Website
 URL: https://tyler-pruitt.github.io/Chinese-Character-Recognition/
 
-Estimated 100% functionality date: July 5, 2021
+Full release date: July 4, 2021
 
 ### Convert Keras Model To Tensorflow.js for Web App
 
