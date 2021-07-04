@@ -19,7 +19,7 @@ margin: auto;
 #predictButton {
 margin: auto;
 margin-top: 5px;
-margin-bottom: 15px;
+margin-bottom: 5px;
 padding: 10px;
 text-align: center;
 }
@@ -27,7 +27,7 @@ text-align: center;
 #clearButton {
 margin: auto;
 margin-top: 5px;
-margin-bottom: 15px;
+margin-bottom: 5px;
 padding: 10px;
 text-align: center;
 }
@@ -40,8 +40,6 @@ text-align: center;
 
 #character {
 margin: auto;
-margin-top: 20px;
-margin-bottom: 20px;
 text-align: center;
 vertical-align: middle;
 }
