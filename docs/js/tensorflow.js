@@ -4,9 +4,9 @@ var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.
 // Set up mobile settings
 if (isMobile) {
   $('#paint').css({'width': '60%'});
-  $('#bigCharacter').css({'width': '30%', 'font-size': '240px'});
-  $('#predictButton').css({'font-size': '50px'});
-  $('#clearButton').css({'font-size': '50px'});
+  $('#bigCharacter').css({'width': '30%', 'font-size': '100px'});
+  $('#predictButton').css({'font-size': '40px'});
+  $('#clearButton').css({'font-size': '40px'});
 } else {
   $('#paint').css({'width': '300px'});
   $('#bigCharacter').css({'width': '150px', 'font-size': '120px'});

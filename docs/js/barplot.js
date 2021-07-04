@@ -5,7 +5,7 @@ var barchart = new Chart(ctx, {
   data: {
     labels: ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "百", "千", "万", "亿"],
     datasets: [{
-      label: 'Probability for Each Character',
+      label: 'Probability',
       data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',

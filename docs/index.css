@@ -1,5 +1,5 @@
 body {
-touch-action: auto; /*https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action*/
+touch-action: auto;
 }
 
 h1 {
