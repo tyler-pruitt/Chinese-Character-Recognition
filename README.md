@@ -23,23 +23,23 @@ Found at https://www.kaggle.com/gpreda/chinese-mnist
 For this data 100 people wrote each of the 15 characters 10 times
 
 ### `suite_id`
-`suite_id` is for each volunteer (100 total)
+suite_id is for each volunteer (100 total)
 
 ### `sample_id`
-`sample_id` is for each sample of each volunteer (10 total) 
+sample_id is for each sample of each volunteer (10 total) 
 i.e. each volunteer writes each character 10 times
     
 ### `code`
-`code` is used to identify each character in their sequence
-i.e. `code` is the ith character in order
+code is used to identify each character in their sequence
+i.e. code is the ith character in order
 
 i.e. 零 is 1, 一 is 2, 二 is 3, ... 九 is 10
 
 ### `value`
-`value` is the numerical value of the character i.e. 5
+value is the numerical value of the character i.e. 5
 
 ### `character`
-`character` is the actual symbol i.e. 五
+character is the actual symbol i.e. 五
 
 ## Model Performance
 Optimizer: ADAM
