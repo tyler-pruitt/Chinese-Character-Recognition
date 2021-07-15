@@ -8,7 +8,7 @@ Full release date: July 4, 2021
 
 ### Convert Keras Model To Tensorflow.js for Web App
 
-```
+```bash
 !pip install tensorflowjs
 
 !tensorflowjs_converter --input_format keras "model.h5" "docs/model"
