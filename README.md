@@ -2,7 +2,7 @@
 A repo for machine-learning powered image classification of handwritten Chinese characters
 
 ## Website
-URL: https://tyler-pruitt.github.io/Chinese-Character-Recognition/
+[Direct link](https://tyler-pruitt.github.io/Chinese-Character-Recognition/)
 
 Full release date: July 4, 2021
 
@@ -18,7 +18,7 @@ Full release date: July 4, 2021
 TensorFlow, Numpy, Pandas, Matplotlib, CV2, OS
 
 ## Data
-Found at https://www.kaggle.com/gpreda/chinese-mnist
+Found [here](https://www.kaggle.com/gpreda/chinese-mnist)
 
 For this data 100 people wrote each of the 15 characters 10 times
 
