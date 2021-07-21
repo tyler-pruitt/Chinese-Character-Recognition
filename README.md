@@ -122,13 +122,13 @@ You can then use this model in for other uses! Enjoy!
 
 ### Option B
 
-#### 1) Download 'archive.zip' and 'ChinCharRecog.py'
+#### 1) Download `archive.zip` and `ChinCharRecog.py`
 
-#### 2) Unpack 'archive.zip' and ensure that its contents are in the same directory as 'ChinCharRecog.py'
-This should include the 'data' folder, the 'chinese_mnist.csv' csv file, and 'chinese_mnist.tfrecords'. 
-For future reference let's call this directory 'folder1'.
+#### 2) Unpack `archive.zip` and ensure that its contents are in the same directory as `ChinCharRecog.py`
+This should include the `data` folder, the `chinese_mnist.csv` csv file, and `chinese_mnist.tfrecords`. 
+For future reference let's call this directory `folder1`.
 
-#### 3) Inside of 'ChinCharRecog.py' change the variable 'directory' on line 81
-Change 'directory' to the /folder1/data/data/ directory. On macOS, this might like something like '/Users/user_name_here/Desktop/folder1/data/data/'.
+#### 3) Inside of `ChinCharRecog.py` change the variable `directory` on line 81
+Change `directory` to the /folder1/data/data/ directory. On macOS, this might like something like /Users/user_name_here/Desktop/folder1/data/data/.
 
-#### 4) Run the file 'ChinCharRecog.py' and enjoy!
+#### 4) Run the file `ChinCharRecog.py` and enjoy!
