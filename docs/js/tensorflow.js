@@ -74,10 +74,6 @@ $('#predictButton').click(function(){
       input.push(data[i + 2] / 255);
     }
 
-    // Model input data
-    console.log("Model Input:");
-    console.log(input);
-
     // Predict character given image data
     predict(input);
   };
@@ -154,10 +150,6 @@ var predict = function(input) {
       // Process the data
       scores = scores[0];
 
-      // The processed output from the model
-      console.log("Model Output:");
-      console.log(scores);
-
       // Determine the highest score's index
       var predictedIndex = scores.indexOf(Math.max(...scores));
 
@@ -166,12 +158,10 @@ var predict = function(input) {
       // Determine the predicted character and output to website and console
       var predictedCharacter = characters[predictedIndex];
       $('#character').html(predictedCharacter);
-      console.log("Predicted Character: " + predictedCharacter);
 
       var probability = scores[predictedIndex] * 100;
 
       var probabilityDisplay = probability.toString() + "%";
-      console.log("Probability: " + probabilityDisplay);
 
       // Round probability to three decimals
       const roundedProbability = Math.round(probability * 1000) / 1000;
