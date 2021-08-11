@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Jan 17 03:39:35 2021
-Last Updated on Tue May 18 06:59 2021
+Last Updated on Wed Aug 11 02:42 2021
 Author: Tyler Pruitt
 """
 
@@ -78,7 +78,7 @@ print(csvData.tail(), end="\n\n")
 
 
 # Load image data (15,000 images each 64 x 64)
-directory = '/Users/tylerpruitt/Desktop/Coding/Machine Learning/chinese character recognition/data/data/'
+directory = input("Enter directory of image data: ")
 
 imageDict = loadImages(directory)
 
@@ -115,8 +115,19 @@ data
 """
 
 # Here we need to 80/20 split based on sample_id (sample_id index is 1)
+invalidSplit = True
 
-split = 0.8
+while invalidSplit:
+    split = float(input("Enter train/test split from 0.0 to 1.0 in increments of 0.1: "))
+    if split >= 0.1 and split <= 1.0:
+        invalidSplit = False
+    elif split < 0.1:
+        print("Train/test split must be at least 0.1 so that there is data to train on")
+    else:
+        print("Train/test split should be at most 0.9 if testing data is desire. Without testing data, 1.0 is the maximum value for train/test split")
+
+print("Training data: " + str(100*split) + "%")
+print("Testing data: " + str(100*(1 - split)) + "%")
 
 trainData = np.empty((int(15000*split), 6), dtype=np.ndarray)
 testData = np.empty((15000 - int(15000*split), 6), dtype=np.ndarray)
@@ -179,33 +190,47 @@ model.compile(optimizer="adam", loss=tf.keras.losses.SparseCategoricalCrossentro
               metrics=["accuracy"])
 
 # Train the model with the training data
-model.fit(trainImages, trainLabels, epochs=15)
+invalidNumberEpochs = True
 
-# Test the model with the testing data
-print("Evaluating testing data...")
-testLoss, testAccuracy = model.evaluate(testImages, testLabels, verbose=1)
-print("Test accuracy: " + str(round(testAccuracy*100, 3)) + "%")
-print("Test loss:", round(testLoss, 5), end="\n\n")
+while invalidNumberEpochs:
+    numberEpochs = int(input("Enter the number of epochs for model training: "))
+    if numberEpochs > 0:
+        invalidNumberEpochs = False
+    else:
+        print("Number of epochs must be greater than 0")
 
-# Test model's prediction about other characters in the testing data
+print("Number of epochs:", numberEpochs)
 
-# Adapt model's output to output probabilities
-model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
+model.fit(trainImages, trainLabels, epochs=numberEpochs)
 
-PredictionData = model.predict(testImages)
+if split < 1.0:
+    # Test the model with the testing data
+    print("Evaluating testing data...")
+    testLoss, testAccuracy = model.evaluate(testImages, testLabels, verbose=1)
+    print("Test accuracy: " + str(round(testAccuracy*100, 3)) + "%")
+    print("Test loss:", round(testLoss, 5), end="\n\n")
+    
+    # Adapt model's output to output probabilities
+    model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
 
-# Check predictions on the 50th and 500th images in the testing data and show images
-barPlotAxis = (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14)
-
-print("Expected value for testImages[50]:", testCharacters[50])
-print("Model's prediction on testImages[50]", characters[np.argmax(PredictionData[50])])
-displayImage(testImages[50])
-plt.bar(barPlotAxis, PredictionData[50])
-
-print("Expected value for testImages[500]:", testCharacters[500])
-print("Model's prediction on testImages[500]", characters[np.argmax(PredictionData[500])])
-displayImage(testImages[500])
-plt.bar(barPlotAxis, PredictionData[500])
+    # Test model's prediction about other characters in the testing data
+    PredictionData = model.predict(testImages)
+    
+    # Check predictions on the 50th and 500th images in the testing data and show images
+    barPlotAxis = (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14)
+    
+    print("Expected value for testImages[50]:", testCharacters[50])
+    print("Model's prediction on testImages[50]", characters[np.argmax(PredictionData[50])])
+    displayImage(testImages[50])
+    plt.bar(barPlotAxis, PredictionData[50])
+    
+    print("Expected value for testImages[500]:", testCharacters[500])
+    print("Model's prediction on testImages[500]", characters[np.argmax(PredictionData[500])])
+    displayImage(testImages[500])
+    plt.bar(barPlotAxis, PredictionData[500])
+else:
+    # Adapt model's output to output probabilities
+    model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
 
 # Save the model and the probability model
 model.save("model")
