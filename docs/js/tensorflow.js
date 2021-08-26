@@ -77,7 +77,7 @@ $('#predictButton').click(function(){
     // Predict character given image data
     predict(input);
   };
-  img.src = canvas.toDataURL('image/png');
+  // img.src = canvas.toDataURL('image/png');
 });
 
 var onPaint = function() {
