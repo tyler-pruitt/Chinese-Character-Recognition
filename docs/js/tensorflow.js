@@ -77,7 +77,7 @@ $('#predictButton').click(function(){
     // Predict character given image data
     predict(input);
   };
-  // img.src = canvas.toDataURL('image/png');
+  img.src = canvas.toDataURL('image/png');
 });
 
 var onPaint = function() {
@@ -123,6 +123,7 @@ function getTouchPos(canvasDom, touchEvent) {
   };
 }
 
+/*
 // Prevent scrolling when touching the canvas
 document.body.addEventListener('touchstart', function (e) {
   if (e.target == canvas) {
@@ -141,6 +142,7 @@ document.body.addEventListener('touchmove', function (e) {
     e.preventDefault();
   }
 }, false);
+*/
 
 // Prediction function
 var predict = function(input) {
