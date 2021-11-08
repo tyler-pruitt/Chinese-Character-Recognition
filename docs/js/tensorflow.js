@@ -34,7 +34,7 @@ canvas.addEventListener('mousemove', function(e) {
 }, false);
 
 // Adjust line width and shape
-context.lineWidth = isMobile ? 40 : 10;
+context.lineWidth = isMobile ? 40 : 8;
 context.lineJoin = 'round';
 context.lineCap = 'round';
 
