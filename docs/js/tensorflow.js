@@ -85,6 +85,11 @@ var onPaint = function() {
   context.stroke();
 };
 
+var OnMobilePaint = function(e) {
+  context.lineTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
+  context.stroke();
+}
+
 // Load the model
 tf.loadLayersModel('model/model.json').then(function(model) {
   window.model = model;
@@ -93,6 +98,8 @@ tf.loadLayersModel('model/model.json').then(function(model) {
 
 // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
 // Set up touch events for mobile, etc
+
+/*
 canvas.addEventListener('touchstart', function (e) {
   //mouse = getTouchPos(canvas, e);
 
@@ -135,16 +142,21 @@ canvas.addEventListener('touchmove', function (e) {
 
 canvas.addEventListener('touchcancel', function (e) {
   e.preventDefault();
-})
+}, false);
+*/
 
-// Get the position of a touch relative to the canvas
-function getTouchPos(canvasDom, touchEvent) {
-  var rect = canvasDom.getBoundingClientRect();
-  return {
-    x: touchEvent.touches[0].clientX - rect.left,
-    y: touchEvent.touches[0].clientY - rect.top
-  };
-}
+canvas.addEventListener('touchstart', function (e) {
+
+  context.moveTo(mouse.x, mouse.y);
+  context.beginPath();
+  canvas.addEventListener('touchmove', OnMobilePaint(e.touches[0]), false);
+  e.preventDefault();
+
+}, false);
+
+canvas.addEventListener('touchend', function() {
+  canvas.removeEventListener('touchmove', OnMobilePaint(e.touches[0]), false);
+});
 
 // Prediction function
 var predict = function(input) {
