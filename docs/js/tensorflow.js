@@ -26,6 +26,7 @@ canvas.width = parseInt(compuetedStyle.getPropertyValue('width'));
 canvas.height = parseInt(compuetedStyle.getPropertyValue('height'));
 
 var mouse = {x: 0, y: 0};
+var touch = {x: 0, y: 0};
 
 // Write on the canvas when the mouse is moving
 canvas.addEventListener('mousemove', function(e) {
@@ -85,8 +86,8 @@ var onPaint = function() {
   context.stroke();
 };
 
-var OnMobilePaint = function(e) {
-  context.lineTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
+var OnMobilePaint = function() {
+  context.lineTo(touch.x, touch.y);
   context.stroke();
 }
 
@@ -145,39 +146,22 @@ canvas.addEventListener('touchcancel', function (e) {
 }, false);
 */
 
-/*
-canvas.addEventListener('touchstart', function (e) {
+canvas.addEventListener('touchmove', function (e) {
+  touch.x = e.pageX - this.offsetLeft;
+  touch.y = e.pageY - this.offsetTop;
+}, false);
 
-  context.moveTo(mouse.x, mouse.y);
+canvas.addEventListener('touchstart', function (e) {
+  context.moveTo(touch.x, touch.y);
   context.beginPath();
-  canvas.addEventListener('touchmove', OnMobilePaint(e.touches[0]), false);
+  canvas.addEventListener('touchmove', OnMobilePaint(), false);
   e.preventDefault();
 
 }, false);
 
 canvas.addEventListener('touchend', function() {
-  canvas.removeEventListener('touchmove', OnMobilePaint(e.touches[0]), false);
+  canvas.removeEventListener('touchmove', OnMobilePaint(), false);
 });
-*/
-
-var myMoveEvent = function (e) {
-  if(this.down) {
-       with(ctx) {
-          beginPath();
-          moveTo(this.X, this.Y);
-          lineTo(e.pageX , e.pageY );
-          ctx.lineWidth=1;
-          stroke();
-       }
-       this.X = e.pageX ;
-       this.Y = e.pageY ;
-  }
-}
-
-canvas.addEventListener('touchmove', function(e) {
-      myMoveEvent(e);
-      e.preventDefault();
-  }, 0);
 
 // Prediction function
 var predict = function(input) {
