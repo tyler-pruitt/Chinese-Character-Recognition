@@ -94,9 +94,6 @@ tf.loadLayersModel('model/model.json').then(function(model) {
 // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
 // Set up touch events for mobile, etc
 canvas.addEventListener('touchstart', function (e) {
-  // New code
-  e.preventDefault();
-
   //mouse = getTouchPos(canvas, e);
 
   var touch = e.touches[0];
@@ -108,20 +105,20 @@ canvas.addEventListener('touchstart', function (e) {
 
   canvas.dispatchEvent(mouseEvent);
 
+  e.preventDefault();
+
 }, false);
 
 canvas.addEventListener('touchend', function (e) {
-  // New code
-  e.preventDefault();
   
   var mouseEvent = new MouseEvent('mouseup', {});
   canvas.dispatchEvent(mouseEvent);
 
+  e.preventDefault();
+
 }, false);
 
 canvas.addEventListener('touchmove', function (e) {
-  // New code
-  e.preventDefault();
 
   var touch = e.touches[0];
 
@@ -131,6 +128,8 @@ canvas.addEventListener('touchmove', function (e) {
   });
 
   canvas.dispatchEvent(mouseEvent);
+
+  e.preventDefault();
 
 }, false);
 
