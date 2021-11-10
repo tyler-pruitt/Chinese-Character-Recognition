@@ -94,27 +94,51 @@ tf.loadLayersModel('model/model.json').then(function(model) {
 // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
 // Set up touch events for mobile, etc
 canvas.addEventListener('touchstart', function (e) {
-  // New code
   mouse = getTouchPos(canvas, e);
 
   var touch = e.touches[0];
 
+  /*
   canvas.dispatchEvent(new MouseEvent('mousedown', {
     clientX: touch.clientX,
     clientY: touch.clientY
   }));
+  */
+
+  var mouseEvent = new MouseEvent('mousedown', {
+    clientX: touch.clientX;
+    clientY: touch.clientY
+  });
+
+  canvas.dispatchEvent(mouseEvent);
+
 }, false);
 
 canvas.addEventListener('touchend', function (e) {
-  canvas.dispatchEvent(new MouseEvent('mouseup', {}));
+  //canvas.dispatchEvent(new MouseEvent('mouseup', {}));
+  
+  var mouseEvent = new MouseEvent('mouseup', {});
+  canvas.dispatchEvent(mouseEvent);
+
 }, false);
 
 canvas.addEventListener('touchmove', function (e) {
   var touch = e.touches[0];
+
+  /*
   canvas.dispatchEvent(new MouseEvent('mousemove', {
     clientX: touch.clientX,
     clientY: touch.clientY
   }));
+  */
+
+  var mouseEvent = new MouseEvent('mousemove', {
+    clientx: touch.clientX,
+    clientY: touch.clientY
+  });
+
+  canvas.dispatchEvent(mouseEvent);
+
 }, false);
 
 // Get the position of a touch relative to the canvas
