@@ -35,7 +35,7 @@ canvas.addEventListener('mousemove', function(e) {
 }, false);
 
 // Adjust line width and shape
-context.lineWidth = isMobile ? 20 : 8;
+context.lineWidth = isMobile ? 15 : 8;
 context.lineJoin = 'round';
 context.lineCap = 'round';
 
@@ -100,52 +100,6 @@ tf.loadLayersModel('model/model.json').then(function(model) {
 // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
 // Set up touch events for mobile, etc
 
-/*
-canvas.addEventListener('touchstart', function (e) {
-  //mouse = getTouchPos(canvas, e);
-
-  var touch = e.touches[0];
-
-  var mouseEvent = new MouseEvent('mousedown', {
-    clientX: touch.clientX,
-    clientY: touch.clientY
-  });
-
-  canvas.dispatchEvent(mouseEvent);
-
-  e.preventDefault();
-
-}, false);
-
-canvas.addEventListener('touchend', function (e) {
-  
-  var mouseEvent = new MouseEvent('mouseup', {});
-  canvas.dispatchEvent(mouseEvent);
-
-  e.preventDefault();
-
-}, false);
-
-canvas.addEventListener('touchmove', function (e) {
-
-  var touch = e.touches[0];
-
-  var mouseEvent = new MouseEvent('mousemove', {
-    clientx: touch.clientX,
-    clientY: touch.clientY
-  });
-
-  canvas.dispatchEvent(mouseEvent);
-
-  e.preventDefault();
-
-}, false);
-
-canvas.addEventListener('touchcancel', function (e) {
-  e.preventDefault();
-}, false);
-*/
-
 canvas.addEventListener('touchmove', function (e) {
   touch.x = e.pageX - this.offsetLeft;
   touch.y = e.pageY - this.offsetTop;
@@ -155,13 +109,12 @@ canvas.addEventListener('touchmove', function (e) {
 canvas.addEventListener('touchstart', function (e) {
   context.moveTo(touch.x, touch.y);
   context.beginPath();
-  canvas.addEventListener('touchmove', OnMobilePaint(), false);
+  canvas.addEventListener('touchmove', OnMobilePaint, false);
   e.preventDefault();
-
 }, false);
 
-canvas.addEventListener('touchend', function() {
-  canvas.removeEventListener('touchmove', OnMobilePaint(), false);
+canvas.addEventListener('touchend', function(e) {
+  canvas.removeEventListener('touchmove', OnMobilePaint, false);
   e.preventDefault();
 }, false);
 
