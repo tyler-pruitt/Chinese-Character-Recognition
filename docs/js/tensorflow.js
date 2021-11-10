@@ -40,7 +40,6 @@ context.lineCap = 'round';
 
 // Set stroke color to white
 // Blue: '#0000FF', Black: '#000000', White: '#ffffff'
-//ontext.strokeStyle = '#000000';
 context.strokeStyle = '#ffffff';
 
 // Make the canvas black instead of white
@@ -96,7 +95,7 @@ tf.loadLayersModel('model/model.json').then(function(model) {
 // Set up touch events for mobile, etc
 canvas.addEventListener('touchstart', function (e) {
   // New code
-  //mouse = getTouchPos(canvas, e);
+  mouse = getTouchPos(canvas, e);
 
   var touch = e.touches[0];
 
@@ -127,7 +126,6 @@ function getTouchPos(canvasDom, touchEvent) {
   };
 }
 
-/*
 // Prevent scrolling when touching the canvas
 document.body.addEventListener('touchstart', function (e) {
   if (e.target == canvas) {
@@ -146,7 +144,6 @@ document.body.addEventListener('touchmove', function (e) {
     e.preventDefault();
   }
 }, false);
-*/
 
 // Prediction function
 var predict = function(input) {
@@ -214,3 +211,4 @@ $('#clearButton').click(function(){
     addData(barchart, characters[i], 0);
   }
 });
+
