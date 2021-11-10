@@ -109,7 +109,7 @@ canvas.addEventListener('touchstart', function (e) {
   */
 
   var mouseEvent = new MouseEvent('mousedown', {
-    clientX: touch.clientX;
+    clientX: touch.clientX,
     clientY: touch.clientY
   });
 
