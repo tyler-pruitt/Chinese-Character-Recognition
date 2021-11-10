@@ -1,6 +1,5 @@
 body {
-/*touch-action: auto;*/
-touch-action: none;
+touch-action: auto;
 }
 
 h1 {
