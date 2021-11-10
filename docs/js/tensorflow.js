@@ -201,8 +201,10 @@ $('#clearButton').click(function(){
   context.clearRect(0, 0, canvas.width, canvas.height);
   
   // If canvas is black, replace black color after clearing the canvas
-  context.fillStyle='black';
-  context.fillRect(0,0,canvas.width,canvas.height);
+  
+  // New code
+  //context.fillStyle='black';
+  //context.fillRect(0,0,canvas.width,canvas.height);
 
   $('#character').html('');
   $('#probability').html('');
