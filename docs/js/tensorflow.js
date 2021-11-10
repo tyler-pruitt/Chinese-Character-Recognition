@@ -18,8 +18,8 @@ var cw = $('#paint').width();
 $('#paint').css({'height': cw + 'px'});
 
 // New code
-cw = $('#character').width();
-$('#character').css({'height': cw + 'px'});
+//cw = $('#character').width();
+//$('#character').css({'height': cw + 'px'});
 
 // From https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
 var canvas = document.getElementById('myCanvas');
@@ -44,11 +44,13 @@ context.lineCap = 'round';
 
 // Set stroke color to white
 // Blue: '#0000FF', Black: '#000000', White: '#ffffff'
-context.strokeStyle = '#ffffff';
+//context.strokeStyle = '#ffffff';
+context.strokeStyle = '#000000';
 
 // Make the canvas black instead of white
-context.fillStyle='black';
-context.fillRect(0,0,canvas.width,canvas.height);
+//context.fillStyle='black';
+//context.fillStyle='white';
+//context.fillRect(0,0,canvas.width,canvas.height);
 
 // Start writing on the canvas when mouse is pressed down
 canvas.addEventListener('mousedown', function(e) {
