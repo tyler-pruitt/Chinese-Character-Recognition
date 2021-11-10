@@ -145,6 +145,7 @@ canvas.addEventListener('touchcancel', function (e) {
 }, false);
 */
 
+/*
 canvas.addEventListener('touchstart', function (e) {
 
   context.moveTo(mouse.x, mouse.y);
@@ -157,6 +158,26 @@ canvas.addEventListener('touchstart', function (e) {
 canvas.addEventListener('touchend', function() {
   canvas.removeEventListener('touchmove', OnMobilePaint(e.touches[0]), false);
 });
+*/
+
+var myMoveEvent = function (e) {
+  if(this.down) {
+       with(ctx) {
+          beginPath();
+          moveTo(this.X, this.Y);
+          lineTo(e.pageX , e.pageY );
+          ctx.lineWidth=1;
+          stroke();
+       }
+       this.X = e.pageX ;
+       this.Y = e.pageY ;
+  }
+}
+
+canvas.addEventListener('touchmove', function(e) {
+      myMoveEvent(e);
+      e.preventDefault();
+  }, 0);
 
 // Prediction function
 var predict = function(input) {
