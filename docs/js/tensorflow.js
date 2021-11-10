@@ -17,6 +17,10 @@ if (isMobile) {
 var cw = $('#paint').width();
 $('#paint').css({'height': cw + 'px'});
 
+// New code
+cw = $('#character').width();
+$('#character').css({'height': cw + 'px'});
+
 // From https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
 var canvas = document.getElementById('myCanvas');
 var context = canvas.getContext('2d');
@@ -94,8 +98,11 @@ tf.loadLayersModel('model/model.json').then(function(model) {
 // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
 // Set up touch events for mobile, etc
 canvas.addEventListener('touchstart', function (e) {
-  mouse = getTouchPos(canvas, e);
+  // New code
+  //mouse = getTouchPos(canvas, e);
+
   var touch = e.touches[0];
+
   canvas.dispatchEvent(new MouseEvent('mousedown', {
     clientX: touch.clientX,
     clientY: touch.clientY
