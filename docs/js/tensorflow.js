@@ -94,6 +94,9 @@ tf.loadLayersModel('model/model.json').then(function(model) {
 // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
 // Set up touch events for mobile, etc
 canvas.addEventListener('touchstart', function (e) {
+  // New code
+  e.preventDefault();
+
   mouse = getTouchPos(canvas, e);
 
   var touch = e.touches[0];
@@ -115,6 +118,9 @@ canvas.addEventListener('touchstart', function (e) {
 }, false);
 
 canvas.addEventListener('touchend', function (e) {
+  // New code
+  e.preventDefault();
+
   //canvas.dispatchEvent(new MouseEvent('mouseup', {}));
   
   var mouseEvent = new MouseEvent('mouseup', {});
@@ -123,6 +129,9 @@ canvas.addEventListener('touchend', function (e) {
 }, false);
 
 canvas.addEventListener('touchmove', function (e) {
+  // New code
+  e.preventDefault();
+
   var touch = e.touches[0];
 
   /*
@@ -141,6 +150,10 @@ canvas.addEventListener('touchmove', function (e) {
 
 }, false);
 
+canvas.addEventListener('touchcancel', function (e) {
+  e.preventDefault();
+})
+
 // Get the position of a touch relative to the canvas
 function getTouchPos(canvasDom, touchEvent) {
   var rect = canvasDom.getBoundingClientRect();
@@ -150,6 +163,7 @@ function getTouchPos(canvasDom, touchEvent) {
   };
 }
 
+/*
 // Prevent scrolling when touching the canvas
 document.body.addEventListener('touchstart', function (e) {
   if (e.target == canvas) {
@@ -168,6 +182,7 @@ document.body.addEventListener('touchmove', function (e) {
     e.preventDefault();
   }
 }, false);
+*/
 
 // Prediction function
 var predict = function(input) {
