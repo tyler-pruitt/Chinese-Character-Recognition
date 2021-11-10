@@ -35,7 +35,7 @@ canvas.addEventListener('mousemove', function(e) {
 }, false);
 
 // Adjust line width and shape
-context.lineWidth = isMobile ? 40 : 8;
+context.lineWidth = isMobile ? 20 : 8;
 context.lineJoin = 'round';
 context.lineCap = 'round';
 
@@ -149,6 +149,7 @@ canvas.addEventListener('touchcancel', function (e) {
 canvas.addEventListener('touchmove', function (e) {
   touch.x = e.pageX - this.offsetLeft;
   touch.y = e.pageY - this.offsetTop;
+  e.preventDefault();
 }, false);
 
 canvas.addEventListener('touchstart', function (e) {
@@ -161,7 +162,12 @@ canvas.addEventListener('touchstart', function (e) {
 
 canvas.addEventListener('touchend', function() {
   canvas.removeEventListener('touchmove', OnMobilePaint(), false);
-});
+  e.preventDefault();
+}, false);
+
+canvas.addEventListener('touchcancel', function(e) {
+  e.preventDefault();
+}, false);
 
 // Prediction function
 var predict = function(input) {
