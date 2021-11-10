@@ -97,7 +97,7 @@ canvas.addEventListener('touchstart', function (e) {
   // New code
   e.preventDefault();
 
-  mouse = getTouchPos(canvas, e);
+  //mouse = getTouchPos(canvas, e);
 
   var touch = e.touches[0];
 
@@ -162,27 +162,6 @@ function getTouchPos(canvasDom, touchEvent) {
     y: touchEvent.touches[0].clientY - rect.top
   };
 }
-
-/*
-// Prevent scrolling when touching the canvas
-document.body.addEventListener('touchstart', function (e) {
-  if (e.target == canvas) {
-    e.preventDefault();
-  }
-}, false);
-
-document.body.addEventListener('touchend', function (e) {
-  if (e.target == canvas) {
-    e.preventDefault();
-  }
-}, false);
-
-document.body.addEventListener('touchmove', function (e) {
-  if (e.target == canvas) {
-    e.preventDefault();
-  }
-}, false);
-*/
 
 // Prediction function
 var predict = function(input) {
