@@ -6,6 +6,8 @@ A repo for machine-learning powered image classification of handwritten Chinese 
 
 Full release date: July 4, 2021
 
+November 10, 2021 Update: Enabled writing the characters on mobile devices.
+
 ### Convert Keras Model To Tensorflow.js for Web App
 
 ```bash
