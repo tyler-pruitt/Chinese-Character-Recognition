@@ -5,13 +5,13 @@ var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.
 if (isMobile) {
   $('#paint').css({'width': '60%'});
   $('#character').css({'font-size': '100px'});
-  $('#predictButton').css({'font-size': '40px'});
-  $('#clearButton').css({'font-size': '40px'});
+  $('.predictButton').css({'font-size': '40px'});
+  $('.clearButton').css({'font-size': '40px'});
 } else {
   $('#paint').css({'width': '300px'});
   $('#character').css({'font-size': '120px'});
-  $('#predictButton').css({'font-size': '20px'});
-  $('#clearButton').css({'font-size': '20px'});
+  $('.predictButton').css({'font-size': '20px'});
+  $('.clearButton').css({'font-size': '20px'});
 }
 
 var cw = $('#paint').width();
@@ -60,7 +60,7 @@ canvas.addEventListener('mouseup', function() {
 }, false);
 
 // Predict button
-$('#predictButton').click(function(){
+$('.predictButton').click(function(){
   // Insert loading spinner into number slot
   $('#character').html('<img id="spinner" src="spinner.gif"/>');
   
@@ -166,7 +166,7 @@ var predict = function(input) {
 }
 
 // Clear button
-$('#clearButton').click(function(){
+$('.clearButton').click(function(){
   context.clearRect(0, 0, canvas.width, canvas.height);
   
   // If canvas is black, replace black color after clearing the canvas
