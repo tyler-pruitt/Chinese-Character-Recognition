@@ -44,7 +44,7 @@ margin: auto;
   -webkit-user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: 20%;
 }
 
 .predictButton:after {
@@ -103,7 +103,7 @@ margin: auto;
   -webkit-user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: 20%;
 }
 
 .clearButton:after {
